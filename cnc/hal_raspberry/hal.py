@@ -168,10 +168,13 @@ def __calibrate_private(x, y, z, invert):
             z_endstop = z_endstop and ((gpio.read(ENDSTOP_PIN_Z) == 1)
                                        == endstop_inverted_z)
         if x_endstop:
+            print("corto x")
             pins &= ~STEP_PIN_MASK_X
         if y_endstop:
+            print("corto y")
             pins &= ~STEP_PIN_MASK_Y
         if z_endstop:
+            print("corto z")
             pins &= ~STEP_PIN_MASK_Z
         if pins != last_pins:
             dma.stop()
