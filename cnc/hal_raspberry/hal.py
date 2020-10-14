@@ -204,6 +204,8 @@ def calibrate(x, y, z):
     :param z: boolean, True to calibrate Z axis.
     :return: boolean, True if all specified end stops were triggered.
     """
+    print("entro en calibracion")
+
     # enable steppers
     gpio.clear(STEPPERS_ENABLE_PIN)
     logging.info("hal calibrate, x={}, y={}, z={}".format(x, y, z))
