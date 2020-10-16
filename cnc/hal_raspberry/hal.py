@@ -305,7 +305,7 @@ def move(generator):
         #print("termino el for")
 
         #verificacion de fines de carrera
-
+        invert=False
 
         if invert:
             endstop_inverted_x = not ENDSTOP_INVERTED_X
