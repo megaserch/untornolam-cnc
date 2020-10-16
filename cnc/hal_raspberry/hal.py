@@ -308,7 +308,7 @@ def move(generator):
         #print("termino el for")
 
         #verificacion de fines de carrera
-        if (gpio.read(ENDSTOP_PIN_X)==0):
+        '''if (gpio.read(ENDSTOP_PIN_X)==0):
             print("corto x 0")
             break
         if (gpio.read(ENDSTOP_PIN_Y)==0):
@@ -325,7 +325,7 @@ def move(generator):
             break
         if (gpio.read(ENDSTOP_PIN_Z_FIN)==0):
             print("corto z MAX")
-            break
+            break'''
 
 
         #fin verificacion de fines de carrera
