@@ -120,6 +120,7 @@ class GMachine(object):
             return
         self.__check_delta(delta)
 
+        print("volviendo a 0")
         logging.info("Moving linearly {}".format(delta))
         gen = PulseGeneratorLinear(delta, velocity)
         self.__check_velocity(gen.max_velocity())

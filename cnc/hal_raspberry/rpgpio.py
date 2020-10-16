@@ -198,6 +198,7 @@ class DMAGPIO(DMAProto):
         """ Run DMA module in stream mode, i.e. does'n finalize last block
             and do not check if there is anything to do.
         """
+        print("entro en runstream")
         # configure PWM hardware module which will clocks DMA
         self._pwm.write_int(PWM_CTL, 0)
         # disable
