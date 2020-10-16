@@ -300,8 +300,8 @@ def move(generator):
                     instant = False
                 else:
                     dma.run_stream()
-                    print ("salio de runstream")
                     is_ran = True
+                    print ("salio de runstream")
     pt = time.time()
     if not is_ran:
         # after long command, we can fill short buffer, that why we may need to
