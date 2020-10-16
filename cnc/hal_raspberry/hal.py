@@ -305,37 +305,13 @@ def move(generator):
         #print("termino el for")
 
         #verificacion de fines de carrera
-        invert=True
-
-        if invert:
-            endstop_inverted_x = not ENDSTOP_INVERTED_X
-            endstop_inverted_y = not ENDSTOP_INVERTED_Y
-            endstop_inverted_z = not ENDSTOP_INVERTED_Z
-        else:
-            endstop_inverted_x = ENDSTOP_INVERTED_X
-            endstop_inverted_y = ENDSTOP_INVERTED_Y
-            endstop_inverted_z = ENDSTOP_INVERTED_Z
-
-        x_endstop = (STEP_PIN_MASK_X & pins) != 0
-        y_endstop = (STEP_PIN_MASK_Y & pins) != 0
-        z_endstop = (STEP_PIN_MASK_Z & pins) != 0
-        # read each sensor three time
-        for _ in range(0, 3):
-            x_endstop = x_endstop and ((gpio.read(ENDSTOP_PIN_X) == 1)
-                                       == endstop_inverted_x)
-            y_endstop = y_endstop and ((gpio.read(ENDSTOP_PIN_Y) == 1)
-                                       == endstop_inverted_y)
-            z_endstop = z_endstop and ((gpio.read(ENDSTOP_PIN_Z) == 1)
-                                       == endstop_inverted_z)
-        if x_endstop:
+        if (gpio.read(ENDSTOP_PIN_X)==1)
             print("corto x")
-            pins &= ~STEP_PIN_MASK_X
-        if y_endstop:
+        if (gpio.read(ENDSTOP_PIN_Y)==1)
             print("corto y")
-            pins &= ~STEP_PIN_MASK_Y
-        if z_endstop:
+        if (gpio.read(ENDSTOP_PIN_Z)==1)
             print("corto z")
-            pins &= ~STEP_PIN_MASK_Z
+
 
         #fin verificacion de fines de carrera
 
