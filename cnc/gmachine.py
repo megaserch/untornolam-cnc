@@ -127,6 +127,7 @@ class GMachine(object):
         hal.move(gen)
         # save position
         self._position = self._position + delta
+        print("termino el movimiento lineal")
 
     @staticmethod
     def __quarter(pa, pb):
