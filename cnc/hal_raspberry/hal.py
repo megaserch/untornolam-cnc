@@ -302,8 +302,35 @@ def move(generator):
                     dma.run_stream()
                     is_ran = True
                     print ("salio de runstream")
-        print("termino el for")
-    print("saliko del for")
+        if
+        #print("termino el for")
+
+        #verificacion de fines de carrera
+
+        x_endstop = (STEP_PIN_MASK_X & pins) != 0
+        y_endstop = (STEP_PIN_MASK_Y & pins) != 0
+        z_endstop = (STEP_PIN_MASK_Z & pins) != 0
+        # read each sensor three time
+        for _ in range(0, 3):
+            x_endstop = x_endstop and ((gpio.read(ENDSTOP_PIN_X) == 1)
+                                       == endstop_inverted_x)
+            y_endstop = y_endstop and ((gpio.read(ENDSTOP_PIN_Y) == 1)
+                                       == endstop_inverted_y)
+            z_endstop = z_endstop and ((gpio.read(ENDSTOP_PIN_Z) == 1)
+                                       == endstop_inverted_z)
+        if x_endstop:
+            print("corto x")
+            pins &= ~STEP_PIN_MASK_X
+        if y_endstop:
+            print("corto y")
+            pins &= ~STEP_PIN_MASK_Y
+        if z_endstop:
+            print("corto z")
+            pins &= ~STEP_PIN_MASK_Z
+
+        #fin verificacion de fines de carrera
+
+    #print("saliko del for")
     pt = time.time()
     if not is_ran:
         # after long command, we can fill short buffer, that why we may need to
