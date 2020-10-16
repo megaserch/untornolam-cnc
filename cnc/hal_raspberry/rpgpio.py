@@ -224,12 +224,14 @@ class DMAGPIO(DMAProto):
         if self.__current_address == 0:
             raise RuntimeError("Nothing was added.")
         # fix 'next' field in previous control block
+        print("empieza movimiento")
         if loop:
             self._phys_memory.write_int(self.__current_address + 20
                                         - self._DMA_CONTROL_BLOCK_SIZE,
                                         self._phys_memory.get_bus_address())
         else:
             self.finalize_stream()
+        print("termina movimiento")
         self.run_stream()
 
     def stop(self):
