@@ -306,8 +306,10 @@ def move(generator):
     if not is_ran:
         # after long command, we can fill short buffer, that why we may need to
         #  wait until long command finishes
+        print ("moviendo")
         while dma.is_active():
             time.sleep(0.01)
+        print ("termino")
         dma.run(False)
     else:
         # stream mode can be activated only if previous command was finished.
