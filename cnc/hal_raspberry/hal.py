@@ -306,6 +306,16 @@ def move(generator):
 
         #verificacion de fines de carrera
 
+
+        if invert:
+            endstop_inverted_x = not ENDSTOP_INVERTED_X
+            endstop_inverted_y = not ENDSTOP_INVERTED_Y
+            endstop_inverted_z = not ENDSTOP_INVERTED_Z
+        else:
+            endstop_inverted_x = ENDSTOP_INVERTED_X
+            endstop_inverted_y = ENDSTOP_INVERTED_Y
+            endstop_inverted_z = ENDSTOP_INVERTED_Z
+
         x_endstop = (STEP_PIN_MASK_X & pins) != 0
         y_endstop = (STEP_PIN_MASK_Y & pins) != 0
         z_endstop = (STEP_PIN_MASK_Z & pins) != 0
