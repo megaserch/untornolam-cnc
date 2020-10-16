@@ -75,6 +75,11 @@ ENDSTOP_PIN_X = 23
 ENDSTOP_PIN_Y = 10
 ENDSTOP_PIN_Z = 25
 
+ENDSTOP_PIN_X_FIN = 24
+ENDSTOP_PIN_Y_FIN = 9
+ENDSTOP_PIN_Z_FIN = 11
+
+
 # -----------------------------------------------------------------------------
 #  Behavior config
 

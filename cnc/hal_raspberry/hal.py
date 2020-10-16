@@ -32,6 +32,9 @@ def init():
     gpio.init(ENDSTOP_PIN_X, rpgpio.GPIO.MODE_INPUT_PULLUP)
     gpio.init(ENDSTOP_PIN_Y, rpgpio.GPIO.MODE_INPUT_PULLUP)
     gpio.init(ENDSTOP_PIN_Z, rpgpio.GPIO.MODE_INPUT_PULLUP)
+    gpio.init(ENDSTOP_PIN_X_FIN, rpgpio.GPIO.MODE_INPUT_PULLUP)
+    gpio.init(ENDSTOP_PIN_Y_FIN, rpgpio.GPIO.MODE_INPUT_PULLUP)
+    gpio.init(ENDSTOP_PIN_Z_FIN, rpgpio.GPIO.MODE_INPUT_PULLUP)
     gpio.init(SPINDLE_PWM_PIN, rpgpio.GPIO.MODE_OUTPUT)
     gpio.init(FAN_PIN, rpgpio.GPIO.MODE_OUTPUT)
     gpio.init(EXTRUDER_HEATER_PIN, rpgpio.GPIO.MODE_OUTPUT)
@@ -306,11 +309,23 @@ def move(generator):
 
         #verificacion de fines de carrera
         if (gpio.read(ENDSTOP_PIN_X)==0):
-            print("corto x")
+            print("corto x 0")
+            break
         if (gpio.read(ENDSTOP_PIN_Y)==0):
-            print("corto y")
+            print("corto y 0")
+            break
         if (gpio.read(ENDSTOP_PIN_Z)==0):
-            print("corto z")
+            print("corto z 0")
+            break
+        if (gpio.read(ENDSTOP_PIN_X_FIN)==0):
+            print("corto x MAX")
+            break
+        if (gpio.read(ENDSTOP_PIN_Y_FIN)==0):
+            print("corto y MAX")
+            break
+        if (gpio.read(ENDSTOP_PIN_Z_FIN)==0):
+            print("corto z MAX")
+            break
 
 
         #fin verificacion de fines de carrera
