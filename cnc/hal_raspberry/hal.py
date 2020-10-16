@@ -305,11 +305,11 @@ def move(generator):
         #print("termino el for")
 
         #verificacion de fines de carrera
-        if (gpio.read(ENDSTOP_PIN_X)==1):
+        if (gpio.read(ENDSTOP_PIN_X)==0):
             print("corto x")
-        if (gpio.read(ENDSTOP_PIN_Y)==1):
+        if (gpio.read(ENDSTOP_PIN_Y)==0):
             print("corto y")
-        if (gpio.read(ENDSTOP_PIN_Z)==1):
+        if (gpio.read(ENDSTOP_PIN_Z)==0):
             print("corto z")
 
 
