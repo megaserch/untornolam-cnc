@@ -302,7 +302,6 @@ def move(generator):
                     dma.run_stream()
                     is_ran = True
                     print ("salio de runstream")
-        if
         #print("termino el for")
 
         #verificacion de fines de carrera
