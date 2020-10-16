@@ -300,6 +300,7 @@ def move(generator):
                     instant = False
                 else:
                     dma.run_stream()
+                    print ("salio de runstream")
                     is_ran = True
     pt = time.time()
     if not is_ran:
