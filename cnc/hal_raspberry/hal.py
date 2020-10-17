@@ -358,7 +358,9 @@ def join():
 def deinit():
     """ De-initialize hardware.
     """
-    join()
+    #prueba mega
+    #join()
+    #fin prueba mega
     disable_steppers()
     pwm.remove_all()
     #gpio.clear(SPINDLE_PWM_PIN)
