@@ -41,10 +41,10 @@ class GMachine(object):
     def release(self):
         """ Free all resources.
         """
-        self._spindle(0)
-        for h in self._heaters:
-            self._heaters[h].stop()
-        self._fan(False)
+        #self._spindle(0)
+        #for h in self._heaters:
+        #    self._heaters[h].stop()
+        #self._fan(False)
         hal.deinit()
 
     def reset(self):
@@ -409,54 +409,54 @@ class GMachine(object):
                     self._convertCoordinates)
             else:
                 self._local = self._position
-        elif c == 'M3':  # spindle on
-            spindle_rpm = gcode.get('S', self._spindle_rpm)
-            if spindle_rpm < 0 or spindle_rpm > SPINDLE_MAX_RPM:
-                raise GMachineException("bad spindle speed")
-            self._spindle(spindle_rpm)
-            self._spindle_rpm = spindle_rpm
-        elif c == 'M5':  # spindle off
-            self._spindle(0)
+        #elif c == 'M3':  # spindle on
+        #    spindle_rpm = gcode.get('S', self._spindle_rpm)
+        #    if spindle_rpm < 0 or spindle_rpm > SPINDLE_MAX_RPM:
+        #        raise GMachineException("bad spindle speed")
+        #    self._spindle(spindle_rpm)
+        #    self._spindle_rpm = spindle_rpm
+        #elif c == 'M5':  # spindle off
+        #    self._spindle(0)
         elif c == 'M2' or c == 'M30':  # program finish, reset everything.
             self.reset()
         elif c == 'M84':  # disable motors
             hal.disable_steppers()
         # extruder and bed heaters control
-        elif c == 'M104' or c == 'M109' or c == 'M140' or c == 'M190':
-            if c == 'M104' or c == 'M109':
-                heater = HEATER_EXTRUDER
-            elif c == 'M140' or c == 'M190':
-                heater = HEATER_BED
-            else:
-                raise Exception("Unexpected heater command")
-            wait = c == 'M109' or c == 'M190'
-            if not gcode.has("S"):
-                raise GMachineException("temperature is not specified")
-            t = gcode.get('S', 0)
-            if ((heater == HEATER_EXTRUDER and t > EXTRUDER_MAX_TEMPERATURE) or
-                    (heater == HEATER_BED and t > BED_MAX_TEMPERATURE) or
-                    t < MIN_TEMPERATURE) and t != 0:
-                raise GMachineException("bad temperature")
-            self._heat(heater, t, wait)
-        elif c == 'M105':  # get temperature
-            try:
-                et = hal.get_extruder_temperature()
-            except (IOError, OSError):
-                et = None
-            try:
-                bt = hal.get_bed_temperature()
-            except (IOError, OSError):
-                bt = None
-            if et is None and bt is None:
-                raise GMachineException("can not measure temperature")
-            answer = "E:{} B:{}".format(et, bt)
-        elif c == 'M106':  # fan control
-            if gcode.get('S', 1) != 0:
-                self._fan(True)
-            else:
-                self._fan(False)
-        elif c == 'M107':  # turn off fan
-            self._fan(False)
+        #elif c == 'M104' or c == 'M109' or c == 'M140' or c == 'M190':
+        #    if c == 'M104' or c == 'M109':
+        #        heater = HEATER_EXTRUDER
+        #    elif c == 'M140' or c == 'M190':
+        #        heater = HEATER_BED
+        #    else:
+        #        raise Exception("Unexpected heater command")
+        #    wait = c == 'M109' or c == 'M190'
+        #    if not gcode.has("S"):
+        #        raise GMachineException("temperature is not specified")
+        #    t = gcode.get('S', 0)
+        #    if ((heater == HEATER_EXTRUDER and t > EXTRUDER_MAX_TEMPERATURE) or
+        #            (heater == HEATER_BED and t > BED_MAX_TEMPERATURE) or
+        #            t < MIN_TEMPERATURE) and t != 0:
+        #        raise GMachineException("bad temperature")
+        #    self._heat(heater, t, wait)
+        #elif c == 'M105':  # get temperature
+        #    try:
+        #        et = hal.get_extruder_temperature()
+        #    except (IOError, OSError):
+        #        et = None
+        #    try:
+        #        bt = hal.get_bed_temperature()
+        #    except (IOError, OSError):
+        #        bt = None
+        #    if et is None and bt is None:
+        #        raise GMachineException("can not measure temperature")
+        #    answer = "E:{} B:{}".format(et, bt)
+        #elif c == 'M106':  # fan control
+        #    if gcode.get('S', 1) != 0:
+        #        self._fan(True)
+        #    else:
+        #        self._fan(False)
+        #elif c == 'M107':  # turn off fan
+        #    self._fan(False)
         elif c == 'M111':  # enable debug
             logging_config.debug_enable()
         elif c == 'M114':  # get current position
