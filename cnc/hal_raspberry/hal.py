@@ -228,11 +228,15 @@ def move(generator):
     # calculation is done.
 
     # enable steppers
+    print("move a 0")
     gpio.clear(STEPPERS_ENABLE_PIN)
+    print("move a 1")
     # 4 control blocks per 32 bytes
     bytes_per_iter = 4 * dma.control_block_size()
+    print("move a 2")
     # prepare and run dma
     dma.clear()  # should just clear current address, but not stop current DMA
+    print("move a 3")
     prev = 0
     is_ran = False
     instant = INSTANT_RUN
