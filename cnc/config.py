@@ -2,18 +2,18 @@
 # Hardware config.
 
 # Maximum velocity for each axis in millimeter per minute.
-MAX_VELOCITY_MM_PER_MIN_X = 150
-MAX_VELOCITY_MM_PER_MIN_Y = 150
-MAX_VELOCITY_MM_PER_MIN_Z = 300
+MAX_VELOCITY_MM_PER_MIN_X = 24000
+MAX_VELOCITY_MM_PER_MIN_Y = 12000
+MAX_VELOCITY_MM_PER_MIN_Z = 600
 MAX_VELOCITY_MM_PER_MIN_E = 1500
 MIN_VELOCITY_MM_PER_MIN = 1
 # Average velocity for endstop calibration procedure
 CALIBRATION_VELOCITY_MM_PER_MIN = 300
 
 # Stepper motors steps per millimeter for each axis.
-STEPPER_PULSES_PER_MM_X = 1600
-STEPPER_PULSES_PER_MM_Y = 1600
-STEPPER_PULSES_PER_MM_Z = 1600
+STEPPER_PULSES_PER_MM_X = 100
+STEPPER_PULSES_PER_MM_Y = 100
+STEPPER_PULSES_PER_MM_Z = 400
 STEPPER_PULSES_PER_MM_E = 150
 
 # Invert axises direction, by default(False) high level means increase of
@@ -37,7 +37,7 @@ TABLE_SIZE_Z_MM = 80
 
 # Mixed settings.
 STEPPER_PULSE_LENGTH_US = 2
-STEPPER_MAX_ACCELERATION_MM_PER_S2 = 1000  # for all axis, mm per sec^2
+STEPPER_MAX_ACCELERATION_MM_PER_S2 = 3000  # for all axis, mm per sec^2
 SPINDLE_MAX_RPM = 10000
 EXTRUDER_MAX_TEMPERATURE = 250
 BED_MAX_TEMPERATURE = 100
