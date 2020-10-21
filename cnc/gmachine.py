@@ -122,9 +122,13 @@ class GMachine(object):
 
         print("volviendo a 0")
         logging.info("Moving linearly {}".format(delta))
+        print("volviendo a 1")
         gen = PulseGeneratorLinear(delta, velocity)
+        print("volviendo a 2")
         self.__check_velocity(gen.max_velocity())
+        print("volviendo a 3")
         hal.move(gen)
+        print("volviendo a 4")
         # save position
         self._position = self._position + delta
         print("termino el movimiento lineal")
