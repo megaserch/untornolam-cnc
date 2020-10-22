@@ -279,11 +279,11 @@ def move(generator):
             continue
         pins = 0
         m = None
-        print("move a 7")
+        #print("move a 7")
         for i in (tx, ty, tz, te):
             if i is not None and (m is None or i < m):
                 m = i
-        print("move a 8")
+        #print("move a 8")
         k = int(round(m * US_IN_SECONDS))
         if tx is not None:
             pins |= STEP_PIN_MASK_X
@@ -295,14 +295,14 @@ def move(generator):
             pins |= STEP_PIN_MASK_E
         if k - prev > 0:
             dma.add_delay(k - prev)
-        print("move a 9")
+        #print("move a 9")
         dma.add_pulse(pins, STEPPER_PULSE_LENGTH_US)
         # TODO not a precise way! pulses will set in queue, instead of crossing
         # if next pulse start during pulse length. Though it almost doesn't
         # matter for pulses with 1-2us length.
         prev = k + STEPPER_PULSE_LENGTH_US
         # instant run handling
-        print("move a 10")
+        #print("move a 10")
         if not is_ran and instant and current_cb is None:
             if k - k0 > 100000:  # wait at least 100 ms is uploaded
                 nt = time.time() - st
