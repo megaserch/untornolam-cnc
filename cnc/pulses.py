@@ -254,7 +254,7 @@ class PulseGeneratorLinear(PulseGenerator):
         :param velocity_mm_per_min: desired velocity.
         """
         super(PulseGeneratorLinear, self).__init__(delta_mm)
-        distance_mm = abs(delta_mm * 8.33)  # type: Coordinates
+        distance_mm = abs(delta_mm)  # type: Coordinates
         # velocity of each axis
         distance_total_mm = distance_mm.length()
         self.max_velocity_mm_per_sec = self._adjust_velocity(distance_mm * (
@@ -281,7 +281,7 @@ class PulseGeneratorLinear(PulseGenerator):
                                  * STEPPER_MAX_ACCELERATION_MM_PER_S2
             self.linear_time_s = (linear_distance_mm
                                   / self.max_velocity_mm_per_sec.length())
-        self._total_pulses_x = round(distance_mm.x * STEPPER_PULSES_PER_MM_X)
+        self._total_pulses_x = round(distance_mm.x * 8 * STEPPER_PULSES_PER_MM_X)
         self._total_pulses_y = round(distance_mm.y * STEPPER_PULSES_PER_MM_Y)
         self._total_pulses_z = round(distance_mm.z * STEPPER_PULSES_PER_MM_Z)
         self._total_pulses_e = round(distance_mm.e * STEPPER_PULSES_PER_MM_E)
