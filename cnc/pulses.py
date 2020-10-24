@@ -254,7 +254,7 @@ class PulseGeneratorLinear(PulseGenerator):
         :param velocity_mm_per_min: desired velocity.
         """
         super(PulseGeneratorLinear, self).__init__(delta_mm)
-        distance_mm = abs(delta_mm)  # type: Coordinates
+        distance_mm = abs(delta_mm * 8.33)  # type: Coordinates
         # velocity of each axis
         distance_total_mm = distance_mm.length()
         self.max_velocity_mm_per_sec = self._adjust_velocity(distance_mm * (
