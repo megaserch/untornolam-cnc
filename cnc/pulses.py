@@ -281,7 +281,7 @@ class PulseGeneratorLinear(PulseGenerator):
                                  * STEPPER_MAX_ACCELERATION_MM_PER_S2
             self.linear_time_s = (linear_distance_mm
                                   / self.max_velocity_mm_per_sec.length())
-        self._total_pulses_x = round(distance_mm.x * 8 * STEPPER_PULSES_PER_MM_X)
+        self._total_pulses_x = round(distance_mm.x *  STEPPER_PULSES_PER_MM_X)
         self._total_pulses_y = round(distance_mm.y * STEPPER_PULSES_PER_MM_Y)
         self._total_pulses_z = round(distance_mm.z * STEPPER_PULSES_PER_MM_Z)
         self._total_pulses_e = round(distance_mm.e * STEPPER_PULSES_PER_MM_E)
