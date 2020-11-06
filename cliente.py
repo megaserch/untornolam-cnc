@@ -35,24 +35,15 @@ print('El sid es', soquete.sid)
 
 
 try:
-    if len(sys.argv) > 1:
-        # Read file with gcode
-        with open(sys.argv[1], 'r') as f:
-            for line in f:
-                line = line.strip()
-                print('> ' + line)
-                if not do_line(line):
-                    break
-    else:
-        # Main loop for interactive shell
-        # Use stdin/stdout, additional interfaces like
-        # UART, Socket or any other can be added.
-        print("*************** Welcome to PyCNC! ***************")
-        while True:
-            line = raw_input('> ')
-            if line == 'quit' or line == 'exit':
-                break
-            do_line(line)
+    # Main loop for interactive shell
+    # Use stdin/stdout, additional interfaces like
+    # UART, Socket or any other can be added.
+    print("*************** Welcome to PyCNC! ***************")
+    while True:
+        line = raw_input('> ')
+        if line == 'quit' or line == 'exit':
+            break
+        do_line(line)
 except KeyboardInterrupt:
     pass
 print("\r\nExiting...")
