@@ -77,8 +77,14 @@ soquete.disconnect()
 #    print("el dato es:" + data)
 #    return "OK", 123
 
+
+
 @soquete.event
 def message(data):
+    print('I received a message!')
+
+@soquete.on('my message')
+def on_message(data):
     print('I received a message!')
 
 @soquete.event
