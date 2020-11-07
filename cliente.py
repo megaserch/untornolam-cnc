@@ -28,12 +28,12 @@ soquete = socketio.Client()
 
 @soquete.event
 def message(data):
-    print(data)
-    #print('I received a message!')
+    print('I received a message!')
 
 @soquete.on('chat message')
 def on_message(data):
-    print('I received a message!')
+    #print('I received a message!')
+    print(data)
 
 @soquete.event
 def connect():
