@@ -28,7 +28,8 @@ soquete = socketio.Client()
 
 @soquete.event
 def message(data):
-    print('I received a message!')
+    print(data)
+    #print('I received a message!')
 
 @soquete.on('chat message')
 def on_message(data):
@@ -45,7 +46,7 @@ def connect_error():
 @soquete.event
 def disconnect():
     print("I'm disconnected!")
-    
+
 
 print("intentanto conectar")
 
