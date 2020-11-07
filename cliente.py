@@ -83,7 +83,7 @@ soquete.disconnect()
 def message(data):
     print('I received a message!')
 
-@soquete.on('my message')
+@soquete.on('chat message')
 def on_message(data):
     print('I received a message!')
 
