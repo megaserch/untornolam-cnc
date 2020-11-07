@@ -33,6 +33,11 @@ print('El sid es', soquete.sid)
 
 #soquete.emit('test', {'probando': 'desde python'})
 
+try:  # python3 compatibility
+    type(raw_input)
+except NameError:
+    # noinspection PyShadowingBuiltins
+    raw_input = input
 
 try:
     # Main loop for interactive shell
