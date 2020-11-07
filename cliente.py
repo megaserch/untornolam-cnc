@@ -25,6 +25,28 @@ import socketio
 # standard Python
 soquete = socketio.Client()
 
+
+@soquete.event
+def message(data):
+    print('I received a message!')
+
+@soquete.on('chat message')
+def on_message(data):
+    print('I received a message!')
+
+@soquete.event
+def connect():
+    print("I'm connected!")
+
+@soquete.event
+def connect_error():
+    print("The connection failed!")
+
+@soquete.event
+def disconnect():
+    print("I'm disconnected!")
+    
+
 print("intentanto conectar")
 
 #soquete.connect('http://66.97.46.179:3003/test')
@@ -61,7 +83,7 @@ print("\r\nExiting...")
 
 
 
-soquete.emit('test', 'ESTE MENSAJE VIENE DE PYTHON! ah y juan se la come')
+#soquete.emit('test', 'ESTE MENSAJE VIENE DE PYTHON! ah y juan se la come')
 #soquete.emit()
 
 print("conectado")
@@ -76,25 +98,3 @@ soquete.disconnect()
     # handle the message
 #    print("el dato es:" + data)
 #    return "OK", 123
-
-
-
-@soquete.event
-def message(data):
-    print('I received a message!')
-
-@soquete.on('chat message')
-def on_message(data):
-    print('I received a message!')
-
-@soquete.event
-def connect():
-    print("I'm connected!")
-
-@soquete.event
-def connect_error():
-    print("The connection failed!")
-
-@soquete.event
-def disconnect():
-    print("I'm disconnected!")
