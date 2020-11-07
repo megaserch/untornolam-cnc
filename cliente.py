@@ -27,7 +27,8 @@ soquete = socketio.Client()
 
 print("intentanto conectar")
 
-soquete.connect('http://66.97.46.179:3003/test')
+#soquete.connect('http://66.97.46.179:3003/test')
+soquete.connect('http://66.97.46.179:3003/')
 
 print('El sid es', soquete.sid)
 
@@ -48,7 +49,8 @@ try:
         line = raw_input('> ')
         if line == 'quit' or line == 'exit':
             break
-        soquete.emit('test', line)
+        #soquete.emit('test', line)
+        soquete.emit('chat message', line)
         #do_line(line)
 except KeyboardInterrupt:
     pass
