@@ -43,7 +43,8 @@ try:
         line = raw_input('> ')
         if line == 'quit' or line == 'exit':
             break
-        do_line(line)
+        soquete.emit('test', line)
+        #do_line(line)
 except KeyboardInterrupt:
     pass
 print("\r\nExiting...")
