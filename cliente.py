@@ -37,23 +37,23 @@ def on_message(data):
 
 @soquete.event
 def connect():
-    print("I'm connected!")
+    print("Conectado al mundo UNtornoLaM!")
 
 @soquete.event
 def connect_error():
-    print("The connection failed!")
+    print("Error de conexion!")
 
 @soquete.event
 def disconnect():
-    print("I'm disconnected!")
+    print("Desconectado del mundo UNtornoLaM, vuelvas brontos!")
 
 
-print("intentanto conectar")
+print("Intentanto conectar al mundo UNtornoLaM!")
 
 #soquete.connect('http://66.97.46.179:3003/test')
 soquete.connect('http://66.97.46.179:3003/')
 
-print('El sid es', soquete.sid)
+print('El id de conexion es', soquete.sid)
 
 #soquete.emit('test', {'probando': 'desde python'})
 

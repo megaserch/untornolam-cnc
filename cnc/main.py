@@ -4,10 +4,43 @@ import os
 import sys
 import readline
 import atexit
+import socketio
 
 import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
+
+soquete = socketio.Client()
+
+@soquete.event
+def message(data):
+    print('I received a message!')
+
+@soquete.on('chat message')
+def on_message(data):
+    #print('I received a message!')
+    do_line(data)
+    #print(data)
+
+@soquete.event
+def connect():
+    print("I'm connected!")
+
+@soquete.event
+def connect_error():
+    print("The connection failed!")
+
+@soquete.event
+def disconnect():
+    print("I'm disconnected!")
+
+
+print("intentanto conectar")
+
+#soquete.connect('http://66.97.46.179:3003/test')
+soquete.connect('http://66.97.46.179:3003/')
+
+print('El sid es', soquete.sid)
 
 try:  # python3 compatibility
     type(raw_input)
@@ -35,8 +68,10 @@ def do_line(line):
         print('ERROR ' + str(e))
         return False
     if res is not None:
+        soquete.emit('chat message', 'OK '+ res)
         print('OK ' + res)
     else:
+        soquete.emit('chat message', 'OK ')
         print('OK')
     return True
 
