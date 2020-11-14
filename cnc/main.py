@@ -39,6 +39,7 @@ def on_message(data):
         soquete.emit('control message', 'camara_prendida')
     if (data=='apagar_camara'):
         print("apagar la camara")
+        subprocess.run(['bash','./apagar_camara.sh'])
         soquete.emit('control message', 'camara_apagada')
 
     #do_line(data)
