@@ -22,12 +22,23 @@ def message(data):
     #do_line(data)
     #print(data)
 
+@soquete.on('GCODE Box')
+def on_message(data):
+    #print('I received a message!')
+    do_line(data)
+    #print(data)
+
+
 @soquete.on('control message')
 def on_message(data):
     #print('I received a message!')
-    #if (data=='prender_camara'):
+    if (data=='prender_camara'):
+        print("prender la camara")
+    if (data=='apagar_camara'):
+        print("apagar la camara")
+
     #do_line(data)
-    print(data)
+    #print(data)
 
 @soquete.event
 def connect():
