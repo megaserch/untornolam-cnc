@@ -33,8 +33,11 @@ def message(data):
 @soquete.on('chat message')
 def on_message(data):
     #print('I received a message!')
-    print(data)
-
+    #print(data)
+    if (data=='torno'):
+        print("entro")
+    else:
+        print("no entro")
 
 @soquete.on('control message')
 def on_message(data):
