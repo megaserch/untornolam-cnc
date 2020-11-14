@@ -120,18 +120,18 @@ class GMachine(object):
             return
         self.__check_delta(delta)
 
-        print("volviendo a 0")
+        #print("volviendo a 0")
         logging.info("Moving linearly {}".format(delta))
-        print("volviendo a 1")
+        #print("volviendo a 1")
         gen = PulseGeneratorLinear(delta, velocity)
-        print("volviendo a 2")
+        #print("volviendo a 2")
         self.__check_velocity(gen.max_velocity())
-        print("volviendo a 3")
+        #print("volviendo a 3")
         hal.move(gen)
-        print("volviendo a 4")
+        #print("volviendo a 0")
         # save position
         self._position = self._position + delta
-        print("termino el movimiento lineal")
+        #print("termino el movimiento lineal")
 
     @staticmethod
     def __quarter(pa, pb):

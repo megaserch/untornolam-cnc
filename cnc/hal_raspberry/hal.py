@@ -171,13 +171,13 @@ def __calibrate_private(x, y, z, invert):
             z_endstop = z_endstop and ((gpio.read(ENDSTOP_PIN_Z) == 1)
                                        == endstop_inverted_z)
         if x_endstop:
-            print("corto x")
+            #print("corto x")
             pins &= ~STEP_PIN_MASK_X
         if y_endstop:
-            print("corto y")
+            #print("corto y")
             pins &= ~STEP_PIN_MASK_Y
         if z_endstop:
-            print("corto z")
+            #print("corto z")
             pins &= ~STEP_PIN_MASK_Z
         if pins != last_pins:
             dma.stop()
@@ -207,7 +207,7 @@ def calibrate(x, y, z):
     :param z: boolean, True to calibrate Z axis.
     :return: boolean, True if all specified end stops were triggered.
     """
-    print("entro en calibracion")
+    #print("entro en calibracion")
 
     # enable steppers
     gpio.clear(STEPPERS_ENABLE_PIN)
@@ -228,15 +228,15 @@ def move(generator):
     # calculation is done.
 
     # enable steppers
-    print("move a 0")
+    #print("move a 0")
     gpio.clear(STEPPERS_ENABLE_PIN)
-    print("move a 1")
+    #print("move a 1")
     # 4 control blocks per 32 bytes
     bytes_per_iter = 4 * dma.control_block_size()
-    print("move a 2")
+    #print("move a 2")
     # prepare and run dma
     dma.clear()  # should just clear current address, but not stop current DMA
-    print("move a 3")
+    #print("move a 3")
     prev = 0
     is_ran = False
     instant = INSTANT_RUN
@@ -244,10 +244,10 @@ def move(generator):
     current_cb = 0
     k = 0
     k0 = 0
-    print("move a 4")
+    #print("move a 4")
     for direction, tx, ty, tz, te in generator:
         if current_cb is not None:
-            print("move a 5")
+            #print("move a 5")
             while dma.current_address() + bytes_per_iter >= current_cb:
                 time.sleep(0.001)
                 current_cb = dma.current_control_block()
@@ -256,7 +256,7 @@ def move(generator):
                     st = time.time()
                     break  # previous dma sequence has stopped
         if direction:  # set up directions
-            print("move a 6")
+            #print("move a 6")
             pins_to_set = 0
             pins_to_clear = 0
             if tx > 0:
