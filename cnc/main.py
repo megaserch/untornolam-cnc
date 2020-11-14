@@ -5,6 +5,7 @@ import sys
 import readline
 import atexit
 import socketio
+import subprocess
 
 import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
