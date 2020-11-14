@@ -16,14 +16,14 @@ soquete = socketio.Client()
 def message(data):
     print('I received a message!')
 
-@soquete.on('chat message')
-def on_message(data):
+#@soquete.on('chat message')
+#def on_message(data):
     #print('I received a message!')
     #do_line(data)
     #print(data)
 
-@soquete.on('control message')
-def on_message(data):
+#@soquete.on('control message')
+#def on_message(data):
     #print('I received a message!')
     #if (data=='')
     #do_line(data)
@@ -72,7 +72,7 @@ def do_line(line):
         g = GCode.parse_line(line)
         res = machine.do_command(g)
     except (GCodeException, GMachineException) as e:
-        #print('ERROR ' + str(e))
+        print('ERROR ' + str(e))
         #soquete.emit('chat message', 'ERROR ' + str(e))
         return False
     if res is not None:
