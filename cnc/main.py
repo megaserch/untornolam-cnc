@@ -19,7 +19,14 @@ def message(data):
 @soquete.on('chat message')
 def on_message(data):
     #print('I received a message!')
-    do_line(data)
+    #do_line(data)
+    #print(data)
+
+@soquete.on('control message')
+def on_message(data):
+    #print('I received a message!')
+    #if (data=='')
+    #do_line(data)
     #print(data)
 
 @soquete.event
@@ -65,13 +72,14 @@ def do_line(line):
         g = GCode.parse_line(line)
         res = machine.do_command(g)
     except (GCodeException, GMachineException) as e:
-        print('ERROR ' + str(e))
+        #print('ERROR ' + str(e))
+        #soquete.emit('chat message', 'ERROR ' + str(e))
         return False
     if res is not None:
-        soquete.emit('chat message', 'OK '+ res)
+        #soquete.emit('chat message', 'OK '+ res)
         print('OK ' + res)
     else:
-        soquete.emit('chat message', 'OK ')
+        #soquete.emit('chat message', 'OK ')
         print('OK')
     return True
 
