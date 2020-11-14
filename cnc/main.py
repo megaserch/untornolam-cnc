@@ -84,13 +84,13 @@ def do_line(line):
         res = machine.do_command(g)
     except (GCodeException, GMachineException) as e:
         print('ERROR ' + str(e))
-        soquete.emit('GCODE Box', 'ERROR ' + str(e))
+        soquete.emit('GCODE Box torno', 'ERROR ' + str(e))
         return False
     if res is not None:
-        soquete.emit('GCODE Box', 'OK '+ res)
+        soquete.emit('GCODE Box torno', 'OK '+ res)
         print('OK ' + res)
     else:
-        soquete.emit('GCODE Box', 'OK ')
+        soquete.emit('GCODE Box torno', 'OK ')
         print('OK')
     return True
 
