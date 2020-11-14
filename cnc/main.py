@@ -25,7 +25,7 @@ def message(data):
 @soquete.on('control message')
 def on_message(data):
     #print('I received a message!')
-    if (data=='prender_camara')
+    if (data=='prender_camara'):
     #do_line(data)
         print("prender camara")
 
