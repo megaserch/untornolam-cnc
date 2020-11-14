@@ -22,7 +22,7 @@ def message(data):
     #do_line(data)
     #print(data)
 
-@soquete.on('GCODE Box')
+@soquete.on('GCODE Box Send')
 def on_message(data):
     #print('I received a message!')
     do_line(data)
