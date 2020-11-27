@@ -17,7 +17,7 @@ soquete = socketio.Client()
 
 @soquete.event
 def message(data):
-    print('I received a message!')
+    print('Mensaje Recibido!')
 
 #@soquete.on('chat message')
 #def on_message(data):
@@ -51,27 +51,27 @@ def on_message(data):
 
 @soquete.event
 def connect():
-    print("I'm connected!")
+    print("Conectado!")
     soquete.emit('control message', 'Enc_SinCal')
     soquete.emit('control message', 'Calibrando')
-    do_line("G28")
+    do_line("G28 X")
     soquete.emit('control message', 'Enc_Calibr')
 
 @soquete.event
 def connect_error():
-    print("The connection failed!")
+    print("Falla de conexion!")
 
 @soquete.event
 def disconnect():
-    print("I'm disconnected!")
+    print("Desconectado!")
 
 
-print("intentanto conectar")
+print("Intentanto conectar")
 
 #soquete.connect('http://66.97.46.179:3003/test')
 soquete.connect('http://66.97.46.179:3003/')
 
-print('El sid es', soquete.sid)
+print('El socket id es', soquete.sid)
 
 try:  # python3 compatibility
     type(raw_input)
@@ -123,7 +123,7 @@ def main():
             # Main loop for interactive shell
             # Use stdin/stdout, additional interfaces like
             # UART, Socket or any other can be added.
-            print("*************** Welcome to PyCNC! ***************")
+            print("*************** Bienvenido a UNTornoLaM! ***************")
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
@@ -131,7 +131,7 @@ def main():
                 do_line(line)
     except KeyboardInterrupt:
         pass
-    print("\r\nExiting...")
+    print("\r\nSaliendo...")
     machine.release()
 
 
