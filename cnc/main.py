@@ -11,6 +11,8 @@ import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
+camara=0
+
 soquete = socketio.Client()
 
 @soquete.event
@@ -33,13 +35,15 @@ def on_message(data):
 @soquete.on('control message')
 def on_message(data):
     #print('I received a message!')
-    if (data=='prender_camara'):
+    if (data=='prender_camara' && camara==0):
         print("prender la camara")
         subprocess.run(['bash','./prender_camara.sh'])
+        camara=1
         soquete.emit('control message', 'camara_prendida')
-    if (data=='apagar_camara'):
+    if (data=='apagar_camara' && camara==1):
         print("apagar la camara")
         subprocess.run(['bash','./apagar_camara.sh'])
+        camara=0
         soquete.emit('control message', 'camara_apagada')
 
     #do_line(data)
@@ -48,6 +52,10 @@ def on_message(data):
 @soquete.event
 def connect():
     print("I'm connected!")
+    soquete.emit('control message', 'Enc_SinCal')
+    soquete.emit('control message', 'Calibrando')
+    do_line("G28")
+    soquete.emit('control message', 'Enc_Calibr')
 
 @soquete.event
 def connect_error():
