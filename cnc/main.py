@@ -35,12 +35,14 @@ def on_message(data):
 @soquete.on('control message')
 def on_message(data):
     #print('I received a message!')
-    if (data=='prender_camara' & camara==0):
+    #if (data=='prender_camara' & camara==0):
+    if (data=='prender_camara'):
         print("prender la camara")
         subprocess.run(['bash','./prender_camara.sh'])
         camara=1
         soquete.emit('control message', 'camara_prendida')
-    if (data=='apagar_camara' & camara==1):
+    #if (data=='apagar_camara' & camara==1):
+    if (data=='apagar_camara'):
         print("apagar la camara")
         subprocess.run(['bash','./apagar_camara.sh'])
         camara=0
