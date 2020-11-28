@@ -53,10 +53,10 @@ def on_message(data):
 @soquete.event
 def connect():
     print("Conectado!")
-    soquete.emit('control message', 'Enc_SinCal')
+    #soquete.emit('control message', 'Enc_SinCal')
     #soquete.emit('control message', 'Calibrando')
     #do_line("G28 X")
-    #soquete.emit('control message', 'Enc_Calibr')
+    soquete.emit('control message', 'Enc_Calibr')
 
 @soquete.event
 def connect_error():
