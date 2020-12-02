@@ -29,7 +29,7 @@ def message(data):
 def on_message(data):
     #print('I received a message!')
     #comentada do_line(data)
-    print(data)
+    print(data+'\n')
 
 
 @soquete.on('control message')
