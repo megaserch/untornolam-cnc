@@ -27,7 +27,7 @@ def message(data):
 @soquete.on('GCODE Box Send')
 def on_message(data):
     #print('I received a message!')
-    do_line(data)
+    #comentada do_line(data)
     print(data)
 
 
@@ -53,8 +53,10 @@ def on_message(data):
 @soquete.event
 def connect():
     print("Conectado!")
-    #soquete.emit('control message', 'Enc_SinCal')
-    #soquete.emit('control message', 'Calibrando')
+    soquete.emit('control message', 'Enc_SinCal')
+    time.sleep(1)
+    soquete.emit('control message', 'Calibrando')
+    time.sleep(5)
     #do_line("G28 X")
     soquete.emit('control message', 'Enc_Calibr')
 
@@ -118,8 +120,8 @@ def main():
                 for line in f:
                     line = line.strip()
                     print('> ' + line)
-                    if not do_line(line):
-                        break
+                    #comentada if not do_line(line):
+                        #comentada break
         else:
             # Main loop for interactive shell
             # Use stdin/stdout, additional interfaces like
@@ -129,7 +131,7 @@ def main():
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
                     break
-                do_line(line)
+                #comentada do_line(line)
     except KeyboardInterrupt:
         pass
     print("\r\nSaliendo...")
