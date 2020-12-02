@@ -25,11 +25,12 @@ def message(data):
     #do_line(data)
     #print(data)
 
-@soquete.on('GCODE Box Send')
+@soquete.on('GCODE Box Chat')
 def on_message(data):
     #print('I received a message!')
     #comentada do_line(data)
-    print(data+'\n')
+    if data[0]!='T':
+        print(data+'\n')
 
 
 @soquete.on('control message')
@@ -101,13 +102,13 @@ def do_line(line):
         res = machine.do_command(g)
     except (GCodeException, GMachineException) as e:
         print('ERROR ' + str(e))
-        soquete.emit('GCODE Box torno', 'ERROR ' + str(e))
+        soquete.emit('GCODE Box Chat', 'TERROR ' + str(e))
         return False
     if res is not None:
-        soquete.emit('GCODE Box torno', 'OK '+ res)
+        soquete.emit('GCODE Box Chat', 'TOK '+ res)
         print('OK ' + res)
     else:
-        soquete.emit('GCODE Box torno', 'OK ')
+        soquete.emit('GCODE Box Chat', 'TOK ')
         print('OK')
     return True
 
