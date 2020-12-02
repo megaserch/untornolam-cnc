@@ -29,8 +29,9 @@ def message(data):
 def on_message(data):
     #print('I received a message!')
     #comentada do_line(data)
+    print(data+'\n')
     if data[0]!='T':
-        print(data+'\n')
+        print('del torno\n')
 
 
 @soquete.on('control message')
