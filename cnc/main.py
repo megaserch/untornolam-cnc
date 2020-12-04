@@ -31,8 +31,8 @@ def on_message(data):
     #comentada do_line(data)
     if data[0]!='T':
         print(data+'\n')
-        #soquete.emit('GCODE Box Chat', 'TOK ')
-        soquete.emit('GCODE-Box-Chat-1', 'TOK ')
+        soquete.emit('GCODE Box Chat', 'TOK ')
+        #soquete.emit('GCODE-Box-Chat-1', 'TOK ')
 
         #print('del torno\n')
 
