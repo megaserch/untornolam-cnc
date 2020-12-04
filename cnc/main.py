@@ -12,7 +12,7 @@ import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
-
+modoprueba = 1
 soquete = socketio.Client()
 
 @soquete.event
@@ -31,7 +31,17 @@ def on_message(data):
     #comentada do_line(data)
     if data[0]!='T':
         print(data+'\n')
-        soquete.emit('GCODE Box Chat', 'TOK ')
+        if modoprueba==1:
+            do_line(data)
+        else:
+            soquete.emit('GCODE Box Chat', 'TOK ')
+    else:
+        if data=='TTORNO'
+            modoprueba = 0
+            soquete.emit('GCODE Box Chat', 'TSe entra en modo TORNO ')
+        if data=='TPRUEBA'
+            modoprueba = 1
+            soquete.emit('GCODE Box Chat', 'TSe entra en modo PRUEBA ')
         #soquete.emit('GCODE-Box-Chat-1', 'TOK ')
 
         #print('del torno\n')
