@@ -36,10 +36,10 @@ def on_message(data):
         else:
             soquete.emit('GCODE Box Chat', 'TOK ')
     else:
-        if data=='TTORNO'
+        if data=='TTORNO':
             modoprueba = 0
             soquete.emit('GCODE Box Chat', 'TSe entra en modo TORNO ')
-        if data=='TPRUEBA'
+        if data=='TPRUEBA':
             modoprueba = 1
             soquete.emit('GCODE Box Chat', 'TSe entra en modo PRUEBA ')
         #soquete.emit('GCODE-Box-Chat-1', 'TOK ')
