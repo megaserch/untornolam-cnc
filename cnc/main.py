@@ -35,7 +35,7 @@ def on_message(data):
         #print('del torno\n')
 
 
-@soquete.on('GCODE Status Torno')
+@soquete.on('GCODE STATUS TORNO')
 def on_message(data):
     #print('I received a message!')
     #comentada do_line(data)
