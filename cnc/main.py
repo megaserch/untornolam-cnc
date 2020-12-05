@@ -12,8 +12,6 @@ import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
-global modoprueba
-
 modoprueba = 1
 soquete = socketio.Client()
 
@@ -29,6 +27,7 @@ def message(data):
 
 @soquete.on('GCODE Box Chat')
 def on_message(data):
+    global modoprueba
     #print('I received a message!')
     #comentada do_line(data)
     if data[0]!='T':
