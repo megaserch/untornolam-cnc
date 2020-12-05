@@ -33,9 +33,10 @@ def on_message(data):
     if data[0]!='T':
         print(data+'\n')
         if modoprueba==1:
-            print(data)
+            print("torno ->" + data + "\n")
             do_line(data)
         else:
+            print("prueba ->" + data + "\n")
             soquete.emit('GCODE Box Chat', 'TOK ')
     else:
         if data=='TTORNO':
