@@ -12,7 +12,7 @@ import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
-modoprueba = 1
+modoprueba = 0
 soquete = socketio.Client()
 
 @soquete.event
