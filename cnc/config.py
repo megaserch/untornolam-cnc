@@ -26,10 +26,19 @@ STEPPER_PULSES_PER_MM_E = 150
 
 # Invert axises direction, by default(False) high level means increase of
 # position. For inverted(True) axis, high level means decrease of position.
-STEPPER_INVERTED_X = True
-STEPPER_INVERTED_Y = False
+
+#original
+#STEPPER_INVERTED_X = True
+#STEPPER_INVERTED_Y = False
+#STEPPER_INVERTED_Z = False
+#STEPPER_INVERTED_E = True
+#finoriginal
+#prueba
+STEPPER_INVERTED_X = False
+STEPPER_INVERTED_Y = true
 STEPPER_INVERTED_Z = False
 STEPPER_INVERTED_E = True
+#finprueba
 
 # Invert zero end stops switches. By default(False) low level on input pin
 # means that axis in zero position. For inverted(True) end stops, high level
