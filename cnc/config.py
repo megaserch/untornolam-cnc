@@ -34,8 +34,8 @@ STEPPER_PULSES_PER_MM_E = 150
 #STEPPER_INVERTED_E = True
 #finoriginal
 #prueba
-STEPPER_INVERTED_X = False
-STEPPER_INVERTED_Y = True
+STEPPER_INVERTED_X = True
+STEPPER_INVERTED_Y = False
 STEPPER_INVERTED_Z = False
 STEPPER_INVERTED_E = True
 #finprueba
@@ -43,9 +43,14 @@ STEPPER_INVERTED_E = True
 # Invert zero end stops switches. By default(False) low level on input pin
 # means that axis in zero position. For inverted(True) end stops, high level
 # means zero position.
-ENDSTOP_INVERTED_X = True
-ENDSTOP_INVERTED_Y = True
+#ENDSTOP_INVERTED_X = True
+#ENDSTOP_INVERTED_Y = True
+#ENDSTOP_INVERTED_Z = False  # Auto leveler
+
+ENDSTOP_INVERTED_X = False
+ENDSTOP_INVERTED_Y = False
 ENDSTOP_INVERTED_Z = False  # Auto leveler
+
 
 # Workplace physical size.
 TABLE_SIZE_X_MM = 3000
