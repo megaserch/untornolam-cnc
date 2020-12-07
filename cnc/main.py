@@ -79,6 +79,8 @@ def on_message(data):
 @soquete.event
 def connect():
     print("Conectado!")
+    soquete.emit('control message', 'Enc_SinCal')
+    time.sleep(1)
     
 
 @soquete.event
@@ -114,14 +116,6 @@ atexit.register(readline.write_history_file, history_file)
 
 machine = GMachine()
 
-soquete.emit('control message', 'Enc_SinCal')
-time.sleep(1)
-soquete.emit('control message', 'Calibrando')
-time.sleep(2)
-do_line("G28")
-time.sleep(100)
-soquete.emit('control message', 'Enc_Calibr')
-time.sleep(5)
 
 def do_line(line):
     try:
@@ -162,6 +156,12 @@ def main():
             # Use stdin/stdout, additional interfaces like
             # UART, Socket or any other can be added.
             print("*************** Bienvenido a UNTornoLaM! ***************")
+            soquete.emit('control message', 'Calibrando')
+            time.sleep(2)
+            do_line("G28")
+            time.sleep(100)
+            soquete.emit('control message', 'Enc_Calibr')
+            time.sleep(5)
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
@@ -169,7 +169,7 @@ def main():
                 #comentada do_line(line)
     except KeyboardInterrupt:
         pass
-    print("\r\nSaliendo...")
+    print("\r\n Saliendo...")
     machine.release()
 
 
