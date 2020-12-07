@@ -161,12 +161,9 @@ def main():
             print("Voy a mandar el do line g28")
             do_line("G28")
             print("Volvi del do_line bro ")
-            print("Voy a mandar el do line g1 x1 f400")
-            do_line("G1 x01f400")
-            print("Volvi del do_line bro ")
-            time.sleep(10)
+            time.sleep(2)
             soquete.emit('control message', 'Enc_Calibr')
-            time.sleep(5)
+            time.sleep(1)
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
