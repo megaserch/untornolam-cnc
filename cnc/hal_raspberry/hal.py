@@ -157,6 +157,7 @@ def __calibrate_private(x, y, z, invert):
     end_time = time.time() + 1.2 * max_size / pulses_per_sec
     delay = int(1000000 / pulses_per_sec)
     last_pins = ~pins
+    print('empieza while')
     while time.time() < end_time:
         # check each axis end stop twice
         x_endstop = (STEP_PIN_MASK_X & pins) != 0
@@ -196,6 +197,7 @@ def __calibrate_private(x, y, z, invert):
             dma.finalize_stream()
         if not dma.is_active():
             dma.run(False)
+    print('termina while')
     return False
 
 
@@ -207,7 +209,7 @@ def calibrate(x, y, z):
     :param z: boolean, True to calibrate Z axis.
     :return: boolean, True if all specified end stops were triggered.
     """
-    #print("entro en calibracion")
+    print("entro en calibracion")
 
     # enable steppers
     gpio.clear(STEPPERS_ENABLE_PIN)
