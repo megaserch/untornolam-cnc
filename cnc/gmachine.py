@@ -395,7 +395,8 @@ class GMachine(object):
             if axises == (False, False, False):
                 axises = True, True, True
             self.safe_zero(*axises)
-            hal.join()
+            
+            #hal.join()
             if not hal.calibrate(*axises):
                 raise GMachineException("failed to calibrate")
             print('termino bien el g28')
