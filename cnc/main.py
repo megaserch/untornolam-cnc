@@ -66,13 +66,11 @@ def on_message(data):
     if (data=='prender_camara'):
         #print("prender la camara")
         subprocess.run(['bash','./prender_camara.sh'])
-        camara=1
         soquete.emit('control message', 'camara_prendida')
     #if (data=='apagar_camara' & camara==1):
     if (data=='apagar_camara'):
         #print("apagar la camara")
         subprocess.run(['bash','./apagar_camara.sh'])
-        camara=0
         soquete.emit('control message', 'camara_apagada')
 
     #do_line(data)
@@ -84,8 +82,8 @@ def connect():
     soquete.emit('control message', 'Enc_SinCal')
     time.sleep(1)
     soquete.emit('control message', 'Calibrando')
+    do_line("G28")
     time.sleep(5)
-    #do_line("G28 X")
     soquete.emit('control message', 'Enc_Calibr')
 
 @soquete.event
