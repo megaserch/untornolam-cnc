@@ -84,7 +84,7 @@ def connect():
     soquete.emit('control message', 'Calibrando')
     time.sleep(2)
     do_line("G28")
-    time.sleep(2)
+    time.sleep(100)
     soquete.emit('control message', 'Enc_Calibr')
     time.sleep(5)
 
