@@ -79,14 +79,7 @@ def on_message(data):
 @soquete.event
 def connect():
     print("Conectado!")
-    soquete.emit('control message', 'Enc_SinCal')
-    time.sleep(1)
-    soquete.emit('control message', 'Calibrando')
-    time.sleep(2)
-    do_line("G28")
-    time.sleep(100)
-    soquete.emit('control message', 'Enc_Calibr')
-    time.sleep(5)
+    
 
 @soquete.event
 def connect_error():
@@ -121,6 +114,14 @@ atexit.register(readline.write_history_file, history_file)
 
 machine = GMachine()
 
+soquete.emit('control message', 'Enc_SinCal')
+time.sleep(1)
+soquete.emit('control message', 'Calibrando')
+time.sleep(2)
+do_line("G28")
+time.sleep(100)
+soquete.emit('control message', 'Enc_Calibr')
+time.sleep(5)
 
 def do_line(line):
     try:
