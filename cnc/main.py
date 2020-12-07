@@ -122,6 +122,10 @@ machine = GMachine()
 
 def do_line(line):
     try:
+        print('La linea que tengo es: ' + line)
+        if line.find('\n') < 0:
+            line = line + '\n' 
+
         g = GCode.parse_line(line)
         res = machine.do_command(g)
     except (GCodeException, GMachineException) as e:
