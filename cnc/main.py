@@ -127,7 +127,8 @@ def do_line(line):
             line = line + '\n' 
 
         g = GCode.parse_line(line)
-        print('g : ' + g + ' \n ')
+        print('EN g :  \n ')
+        print(vars(g))
         res = machine.do_command(g)
     except (GCodeException, GMachineException) as e:
         print('ERROR ' + str(e))
