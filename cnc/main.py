@@ -80,7 +80,7 @@ def on_message(data):
 def connect():
     print("Conectado!")
     soquete.emit('control message', 'Enc_SinCal')
-    time.sleep(1)
+    #time.sleep(1)
     
 
 @soquete.event
@@ -157,13 +157,13 @@ def main():
             # UART, Socket or any other can be added.
             print("*************** Bienvenido a UNTornoLaM! ***************")
             soquete.emit('control message', 'Calibrando')
-            time.sleep(2)
+           # time.sleep(2)
             print("Voy a mandar el do line g28")
             do_line("G28")
             print("Volvi del do_line bro ")
-            time.sleep(2)
+            #time.sleep(2)
             soquete.emit('control message', 'Enc_Calibr')
-            time.sleep(1)
+            #time.sleep(1)
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
