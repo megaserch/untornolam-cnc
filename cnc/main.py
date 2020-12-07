@@ -159,7 +159,8 @@ def main():
             soquete.emit('control message', 'Calibrando')
             time.sleep(2)
             do_line("G28")
-            time.sleep(100)
+            do_line("G1 x0 f400")
+            time.sleep(10)
             soquete.emit('control message', 'Enc_Calibr')
             time.sleep(5)
             while True:
