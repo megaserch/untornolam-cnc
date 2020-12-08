@@ -364,16 +364,20 @@ def join():
     """
     print("entro en join")
     logging.info("hal join()")
+    print(vars(dma))
     # wait till dma works
     while dma.is_active():
         time.sleep(0.01)
     print("salio del while del dma")
+
+    print(vars(dma))
 
 def deinit():
     """ De-initialize hardware.
     """
     #prueba mega
     join()
+    print(vars(dma))
     #fin prueba mega
     disable_steppers()
     pwm.remove_all()
