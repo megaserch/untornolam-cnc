@@ -81,7 +81,7 @@ def connect():
     print("Conectado!")
     soquete.emit('control message', 'Enc_SinCal')
     #time.sleep(1)
-    
+
 
 @soquete.event
 def connect_error():
@@ -121,7 +121,7 @@ def do_line(line):
     try:
         print('Line : ' + line + ' \n ')
         if line.find('\n') < 0:
-            line = line + '\n' 
+            line = line + '\n'
 
         g = GCode.parse_line(line)
         print('EN g :  \n ')
@@ -161,11 +161,11 @@ def main():
             soquete.emit('control message', 'Calibrando')
            # time.sleep(2)
             print("Voy a mandar el do line g28")
-            #do_line("g91")
+            do_line("g91")
             time.sleep(0.1)
-            #do_line("g1 x20 f400")
+            do_line("g1 x20 f400")
             time.sleep(0.1)
-            #do_line("G28")
+            do_line("G28")
             time.sleep(0.1)
             print("Volvi del do_line bro ")
             #time.sleep(2)
