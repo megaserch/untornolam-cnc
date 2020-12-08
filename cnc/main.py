@@ -151,8 +151,10 @@ def main():
                 for line in f:
                     line = line.strip()
                     print('> ' + line)
-                    #comentada if not do_line(line):
-                        #comentada break
+                    #comentada
+                    if not do_line(line):
+                        #comentada
+                        break
         else:
             # Main loop for interactive shell
             # Use stdin/stdout, additional interfaces like
