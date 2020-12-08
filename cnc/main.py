@@ -155,7 +155,7 @@ def main():
                     if not do_line(line):
                         #comentada
                         break
-                    time.sleep(6)
+                    time.sleep(3)
         else:
             # Main loop for interactive shell
             # Use stdin/stdout, additional interfaces like
