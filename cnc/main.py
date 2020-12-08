@@ -13,7 +13,7 @@ from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
 modoprueba = 0
-soquete = socketio.Client()
+'''soquete = socketio.Client()
 
 @soquete.event
 def message(data):
@@ -98,7 +98,7 @@ print("Intentanto conectar")
 soquete.connect('http://66.97.46.179:3003/')
 
 print('El socket id es', soquete.sid)
-
+'''
 try:  # python3 compatibility
     type(raw_input)
 except NameError:
@@ -119,25 +119,25 @@ machine = GMachine()
 
 def do_line(line):
     try:
-        print('Line : ' + line + ' \n ')
+        #print('Line : ' + line + ' \n ')
         if line.find('\n') < 0:
             line = line + '\n'
 
         g = GCode.parse_line(line)
-        print('EN g :  \n ')
-        print(vars(g))
-        print('voy a mandar el do command')
+        #print('EN g :  \n ')
+        #print(vars(g))
+        #print('voy a mandar el do command')
         res = machine.do_command(g)
-        print('volvi del do_comand')
+        #print('volvi del do_comand')
     except (GCodeException, GMachineException) as e:
         print('ERROR ' + str(e))
-        soquete.emit('GCODE Box Chat', 'TERROR ' + str(e))
+        #soquete.emit('GCODE Box Chat', 'TERROR ' + str(e))
         return False
     if res is not None:
-        soquete.emit('GCODE Box Chat', 'TOK '+ res)
+        #soquete.emit('GCODE Box Chat', 'TOK '+ res)
         print('OK ' + res)
     else:
-        soquete.emit('GCODE Box Chat', 'TOK ')
+        #soquete.emit('GCODE Box Chat', 'TOK ')
         print('OK')
     return True
 
@@ -158,24 +158,24 @@ def main():
             # Use stdin/stdout, additional interfaces like
             # UART, Socket or any other can be added.
             print("*************** Bienvenido a UNTornoLaM! ***************")
-            soquete.emit('control message', 'Calibrando')
+            #soquete.emit('control message', 'Calibrando')
            # time.sleep(2)
-            print("Voy a mandar el do line g28")
-            do_line("g91")
-            time.sleep(0.1)
-            do_line("g1 x20 f400")
-            time.sleep(0.1)
-            do_line("G28")
-            time.sleep(0.1)
-            print("Volvi del do_line bro ")
+            #print("Voy a mandar el do line g28")
+            #do_line("g91")
+            #time.sleep(0.1)
+            #do_line("g1 x20 f400")
+            #time.sleep(0.1)
+            #do_line("G28")
+            #time.sleep(0.1)
+            #print("Volvi del do_line bro ")
             #time.sleep(2)
-            soquete.emit('control message', 'Enc_Calibr')
+            #soquete.emit('control message', 'Enc_Calibr')
             #time.sleep(1)
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
                     break
-                #comentada do_line(line)
+                do_line(line)
     except KeyboardInterrupt:
         pass
     print("\r\n Saliendo...")
