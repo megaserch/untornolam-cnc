@@ -362,11 +362,12 @@ def move(generator):
 def join():
     """ Wait till motors work.
     """
+    print("entro en join")
     logging.info("hal join()")
     # wait till dma works
     while dma.is_active():
         time.sleep(0.01)
-
+    print("salio del while del dma")
 
 def deinit():
     """ De-initialize hardware.
