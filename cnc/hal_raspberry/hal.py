@@ -372,7 +372,7 @@ def deinit():
     """ De-initialize hardware.
     """
     #prueba mega
-    #join()
+    join()
     #fin prueba mega
     disable_steppers()
     pwm.remove_all()
