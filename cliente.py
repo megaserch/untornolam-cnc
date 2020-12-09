@@ -73,6 +73,11 @@ def on_message(data):
         modoprueba = 1
         return True
 
+     if (data=='test')
+        print("Test")
+        subprocess.run(['bash','ps -aux'])
+        return True
+
     print('Comando del Torno desconocido: ' + data)
     return True
 
