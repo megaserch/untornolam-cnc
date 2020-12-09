@@ -20,10 +20,11 @@ import os
 import sys
 import readline
 import atexit
-import socketio
+#import socketio
+from socketIO_client import SocketIO
 
 # standard Python
-soquete = socketio.Client()
+soquete = SocketIO('http://66.97.46.179',3003)
 
 
 @soquete.event
@@ -33,39 +34,27 @@ def message(data):
 @soquete.on('chat message')
 def on_message(data):
     #print('I received a message!')
-    #print(data)
-    if (data=='torno'):
-        print("entro")
-    else:
-        print("no entro")
-
-@soquete.on('control message')
-def on_message(data):
-    #print('I received a message!')
-    if (data=='juan'):
-        print("entro")
-    else:
-        print("no entro")
+    print(data)
 
 @soquete.event
 def connect():
-    print("Conectado al mundo UNtornoLaM!")
+    print("I'm connected!")
 
 @soquete.event
 def connect_error():
-    print("Error de conexion!")
+    print("The connection failed!")
 
 @soquete.event
 def disconnect():
-    print("Desconectado del mundo UNtornoLaM, vuelvas brontos!")
+    print("I'm disconnected!")
 
 
-print("Intentanto conectar al mundo UNtornoLaM!")
+print("intentanto conectar")
 
 #soquete.connect('http://66.97.46.179:3003/test')
-soquete.connect('http://66.97.46.179:3003/')
+#soquete.connect('http://66.97.46.179:3003/')
 
-print('El id de conexion es', soquete.sid)
+print('El sid es', soquete.sid)
 
 #soquete.emit('test', {'probando': 'desde python'})
 
