@@ -1,2 +1,2 @@
-cd home/pi/untornolam-cnc/untornolam-cnc
+cd /home/pi/untornolam-cnc/untornolam-cnc
 git pull
