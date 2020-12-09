@@ -42,7 +42,7 @@ def on_message(data):
     #if (data=='prender_camara' & camara==0):
     if (data=='prender_torno'):
         print("Prender Torno")
-        subprocess.run(['bash','screen -dmS torno-torno ./otros/torno.sh'])
+        subprocess.run(['bash','./otros/app-torno.sh'])
         soquete.emit('control message', 'Torno Encendido')
         #if (data=='apagar_camara' & camara==1):
         return True
