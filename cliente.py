@@ -27,7 +27,7 @@ import subprocess
 soquete = socketio.Client()
 
 
-modoprueba = 0
+#modoprueba = 0
 
 @soquete.event
 def message(data):
@@ -35,7 +35,7 @@ def message(data):
 
 @soquete.on('COMANDOS TORNO')
 def on_message(data):
-    global modoprueba
+    #global modoprueba
     #print('I received a message!')
     #print(data)
     #print('I received a message!')
@@ -50,28 +50,19 @@ def on_message(data):
     if (data=='apagar_torno'):
         print("Apagar Torno")
         subprocess.run(['bash','screen ./otros/apagar_torno.sh'])
-        soquete.emit('control message', 'camara_apagada')
+        soquete.emit('control message', 'Torno Apagado')
         return True
 
     if (data=='actualizar_torno'):
         print("Actualizar GIT Torno")
         subprocess.run(['bash','./otros/actualizar.sh'])
-        soquete.emit('control message', 'camara_apagada')
+        soquete.emit('control message', 'Torno Actualizado')
         return True
 
     if (data=='habilitar_ssh'):
         print("Habilitar GIT Torno")
         subprocess.run(['bash','./otros/habilitar_ssh.sh'])
-        return True
-
-    if (data=='modo_prueba_set_0'):
-        print("Seteo el modo prueba en 0")
-        modoprueba = 0
-        return True
-
-    if (data=='modo_prueba_set_1'):
-        print("Seteo el modo prueba en 1")
-        modoprueba = 1
+        soquete.emit('control message', 'SSH Habilitado')
         return True
 
     if (data=='test'):
