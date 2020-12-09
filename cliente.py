@@ -90,10 +90,10 @@ def on_message(data):
 @soquete.on('control message')
 def on_message(data):
     #print('I received a message!')
-    if (data=='juan'):
-        print("entro")
-    else:
-        print("no entro")
+    #if (data=='juan'):
+    #    print("entro")
+    #else:
+    #    print("no entro")
 
 @soquete.event
 def connect():
