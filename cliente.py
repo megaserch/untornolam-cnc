@@ -49,7 +49,7 @@ def on_message(data):
 
     if (data=='apagar_torno'):
         print("Apagar Torno")
-        subprocess.run(['bash','screen /home/pi/untornolam-cnc/otros/apagar_torno.sh'])
+        subprocess.run(['bash','/home/pi/untornolam-cnc/otros/apagar_torno.sh'])
         soquete.emit('control message', 'Torno Apagado')
         return True
 
