@@ -38,16 +38,16 @@ def on_message(data):
     #if (data=='prender_camara' & camara==0):
     if (data=='prender_torno'):
         #print("prender la camara")
-        subprocess.run(['bash','screen -dmS torno-torno ./torno.sh'])
+        subprocess.run(['bash','screen -dmS torno-torno ./otros/torno.sh'])
         soquete.emit('control message', 'Torno Encendido')
         #if (data=='apagar_camara' & camara==1):
     if (data=='apagar_torno'):
         #print("apagar la camara")
-        subprocess.run(['bash','screen ./apagar_camara.sh'])
+        subprocess.run(['bash','screen ./otros/apagar_camara.sh'])
         soquete.emit('control message', 'camara_apagada')
     if (data=='actualizar_torno'):
         #print("apagar la camara")
-        subprocess.run(['bash','screen -dmS torno-actualizar ./actualizar.sh'])
+        subprocess.run(['bash','screen -dmS torno-actualizar ./otros/actualizar.sh'])
         soquete.emit('control message', 'camara_apagada')
 
 #do_line(data)
