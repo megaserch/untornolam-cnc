@@ -49,7 +49,7 @@ def on_message(data):
 
     if (data=='apagar_torno'):
         print("Apagar Torno")
-        subprocess.run(['bash','screen ./otros/apagar_camara.sh'])
+        subprocess.run(['bash','screen ./otros/apagar_torno.sh'])
         soquete.emit('control message', 'camara_apagada')
         return True
 
@@ -87,13 +87,13 @@ def on_message(data):
 #do_line(data)
 #print(data)
 
-@soquete.on('control message')
-def on_message(data):
+#@soquete.on('control message')
+#def on_message(data):
     #print('I received a message!')
     #if (data=='juan'):
     #    print("entro")
     #else:
-    #    print("no entro")
+    #print("no entro")
 
 @soquete.event
 def connect():
