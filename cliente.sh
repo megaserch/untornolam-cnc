@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-python3 ./cliente.py
+python3 /home/pi/untornolam-cnc/untornolam-cnc/cliente.py
