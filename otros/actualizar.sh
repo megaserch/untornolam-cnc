@@ -1,5 +1,2 @@
-cd untornolam-cnc
-chmod -R 644 *
+cd home/pi/untornolam-cnc/untornolam-cnc
 git pull
-chmod -R 755 *
-
