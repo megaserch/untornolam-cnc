@@ -63,17 +63,17 @@ def on_message(data):
         subprocess.run(['bash','./otros/habilitar_ssh.sh'])
         return True
 
-    if (data=='modo_prueba_set_0')
+    if (data=='modo_prueba_set_0'):
         print("Seteo el modo prueba en 0")
         modoprueba = 0
         return True
 
-    if (data=='modo_prueba_set_1')
+    if (data=='modo_prueba_set_1'):
         print("Seteo el modo prueba en 1")
         modoprueba = 1
         return True
 
-     if (data=='test')
+     if (data=='test'):
         print("Test")
         subprocess.run(['bash','ps -aux'])
         return True
