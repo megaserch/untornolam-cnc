@@ -26,29 +26,57 @@ import socketio
 soquete = socketio.Client()
 
 
+modoprueba = 0
+
 @soquete.event
 def message(data):
     print('I received a message!')
 
 @soquete.on('COMANDOS TORNO')
 def on_message(data):
+    global modoprueba
     #print('I received a message!')
     #print(data)
     #print('I received a message!')
     #if (data=='prender_camara' & camara==0):
     if (data=='prender_torno'):
-        #print("prender la camara")
+        print("Prender Torno")
         subprocess.run(['bash','screen -dmS torno-torno ./otros/torno.sh'])
         soquete.emit('control message', 'Torno Encendido')
         #if (data=='apagar_camara' & camara==1):
+        return True
+
     if (data=='apagar_torno'):
-        #print("apagar la camara")
+        print("Apagar Torno")
         subprocess.run(['bash','screen ./otros/apagar_camara.sh'])
         soquete.emit('control message', 'camara_apagada')
+        return True
+
     if (data=='actualizar_torno'):
-        #print("apagar la camara")
-        subprocess.run(['bash','screen -dmS torno-actualizar ./otros/actualizar.sh'])
+        print("Actualizar GIT Torno")
+        subprocess.run(['bash','./otros/actualizar.sh'])
         soquete.emit('control message', 'camara_apagada')
+        return True
+
+    if (data=='habilitar_ssh'):
+        print("Habilitar GIT Torno")
+        subprocess.run(['bash','./otros/habilitar_ssh.sh'])
+        return True
+
+    if (data=='modo_prueba_set_0')
+        print("Seteo el modo prueba en 0")
+        modoprueba = 0
+        return True
+
+    if (data=='modo_prueba_set_1')
+        print("Seteo el modo prueba en 1")
+        modoprueba = 1
+        return True
+
+    print('Comando del Torno desconocido: ' + data)
+    return True
+
+    
 
 #do_line(data)
 #print(data)
