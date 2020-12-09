@@ -30,14 +30,28 @@ soquete = socketio.Client()
 def message(data):
     print('I received a message!')
 
-@soquete.on('chat message')
+@soquete.on('COMANDOS TORNO')
 def on_message(data):
     #print('I received a message!')
     #print(data)
-    if (data=='torno'):
-        print("entro")
-    else:
-        print("no entro")
+    #print('I received a message!')
+    #if (data=='prender_camara' & camara==0):
+    if (data=='prender_torno'):
+        #print("prender la camara")
+        subprocess.run(['bash','screen -dmS torno-torno ./torno.sh'])
+        soquete.emit('control message', 'Torno Encendido')
+        #if (data=='apagar_camara' & camara==1):
+    if (data=='apagar_torno'):
+        #print("apagar la camara")
+        subprocess.run(['bash','screen ./apagar_camara.sh'])
+        soquete.emit('control message', 'camara_apagada')
+    if (data=='actualizar_torno'):
+        #print("apagar la camara")
+        subprocess.run(['bash','screen -dmS torno-actualizar ./actualizar.sh'])
+        soquete.emit('control message', 'camara_apagada')
+
+#do_line(data)
+#print(data)
 
 @soquete.on('control message')
 def on_message(data):
