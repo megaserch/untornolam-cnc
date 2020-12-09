@@ -13,7 +13,7 @@ from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
 modoprueba = 0
-'''soquete = socketio.Client()
+soquete = socketio.Client()
 
 @soquete.event
 def message(data):
@@ -98,7 +98,8 @@ print("Intentanto conectar")
 soquete.connect('http://66.97.46.179:3003/')
 
 print('El socket id es', soquete.sid)
-'''
+
+
 try:  # python3 compatibility
     type(raw_input)
 except NameError:
