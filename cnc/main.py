@@ -154,8 +154,8 @@ def main():
                     #comentada
                     if not do_line(line):
                         #comentada
-                        time.sleep(4)
                         break
+                    time.sleep(6)
         else:
             # Main loop for interactive shell
             # Use stdin/stdout, additional interfaces like
