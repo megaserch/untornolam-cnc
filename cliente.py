@@ -21,6 +21,7 @@ import sys
 import readline
 import atexit
 import socketio
+import subprocess
 
 # standard Python
 soquete = socketio.Client()
