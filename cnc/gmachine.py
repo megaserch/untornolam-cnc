@@ -390,18 +390,18 @@ class GMachine(object):
         elif c == 'G21':  # switch to mm
             self._convertCoordinates = 1.0
         elif c == 'G28':  # home
-            print('entro bien en g28')
+            #print('entro bien en g28')
             axises = gcode.has('X'), gcode.has('Y'), gcode.has('Z')
-            print (axises)
+            #print (axises)
             if axises == (False, False, False):
                 axises = True, True, True
-            print (axises)
-            #self.safe_zero(*axises)
-            print ("paso el safe zero")
+            #print (axises)
+            self.safe_zero(*axises)
+            #print ("paso el safe zero")
             hal.join()
             if not hal.calibrate(*axises):
                 raise GMachineException("failed to calibrate")
-            print('termino bien el g28')
+            #print('termino bien el g28')
         elif c == 'G53':  # switch to machine coords
             self._local = Coordinates(0.0, 0.0, 0.0, 0.0)
         elif c == 'G90':  # switch to absolute coords
