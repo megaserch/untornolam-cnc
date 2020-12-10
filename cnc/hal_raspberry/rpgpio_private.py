@@ -237,9 +237,13 @@ class DMAProto(object):
             still active or cycle sequence is working.
         :return: boolean value
         """
+        print("entro en is_active")
         cs = self._dma.read_int(self._DMA_CHANNEL_ADDRESS + DMA_CS)
+        print(cs)
         if cs & DMA_CS_ACTIVE == DMA_CS_ACTIVE:
+            print("retorno true")
             return True
+        print("retorno false")
         return False
 
     def current_control_block(self):

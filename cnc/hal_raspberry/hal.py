@@ -317,7 +317,7 @@ def move(generator):
                 else:
                     dma.run_stream()
                     is_ran = True
-                    print ("salio de runstream")
+                    #print ("salio de runstream")
         #print("termino el for")
 
         #verificacion de fines de carrera
@@ -348,8 +348,11 @@ def move(generator):
     if not is_ran:
         # after long command, we can fill short buffer, that why we may need to
         #  wait until long command finishes
+        print("va a entrar al while")
         while dma.is_active():
+            print("dentro del while")
             time.sleep(0.01)
+        print("salio del while")
         dma.run(False)
     else:
         # stream mode can be activated only if previous command was finished.
