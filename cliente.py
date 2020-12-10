@@ -124,8 +124,8 @@ try:
         if line == 'quit' or line == 'exit':
             break
         #soquete.emit('test', line)
-        soquete.emit('chat message', line)
-        #do_line(line)
+        #soquete.emit('chat message', line)
+        do_line(line)
 except KeyboardInterrupt:
     pass
 print("\r\nExiting...")
