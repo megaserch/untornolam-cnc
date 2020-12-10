@@ -388,8 +388,9 @@ class GMachine(object):
                         vl = v
             self._move_linear(delta, vl)
         elif c == 'D1':
-            p = self.position()
-            self._local = Coordinates(p.x, p.y, p.z, p.e)
+            print('Holiiiiiis D1')
+            #p = self.position()
+            #self._local = Coordinates(p.x, p.y, p.z, p.e)
             #self._move_linear_propio(delta, velocity)
         elif c == 'G1':  # linear interpolation
             self._move_linear(delta, velocity)
