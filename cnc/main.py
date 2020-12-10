@@ -133,16 +133,19 @@ machine = GMachine()
 
 def do_line(line):
     try:
-        #print('Line : ' + line + ' \n ')
+        print('Line : ' + line + ' \n ')
         if line.find('\n') < 0:
             line = line + '\n'
 
+        if line[0] == 'D' and line[1] == '1':
+            print( 'case D1 ')
+            
         g = GCode.parse_line(line)
-        #print('EN g :  \n ')
-        #print(vars(g))
-        #print('voy a mandar el do command')
+        print('EN g :  \n ')
+        print(vars(g))
+        print('voy a mandar el do command')
         res = machine.do_command(g)
-        #print('volvi del do_comand')
+        print('volvi del do_comand')
     except (GCodeException, GMachineException) as e:
         print('ERROR ' + str(e))
         #soquete.emit('GCODE Box Chat', 'TERROR ' + str(e))

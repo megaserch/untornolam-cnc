@@ -343,8 +343,9 @@ class GMachine(object):
         logging.debug("got command " + str(gcode.params))
         # read command
         c = gcode.command()
-        if c is None and gcode.has_coordinates():
-            c = 'G1'
+        if c != 'D1': 
+            if c is None and gcode.has_coordinates():
+                c = 'G1'
         # read parameters
         if self._absoluteCoordinates:
             coord = gcode.coordinates(self._position - self._local,
