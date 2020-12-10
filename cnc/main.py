@@ -138,8 +138,8 @@ def do_line(line):
             line = line + '\n'
 
         if line[0] == 'D' and line[1] == '1':
-            res = machine.do_command(g)
             print( 'case D1 ')
+            res = machine.do_command(g)
         else:    
             g = GCode.parse_line(line)
             print('EN g :  \n ')

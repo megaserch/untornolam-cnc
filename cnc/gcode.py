@@ -81,6 +81,8 @@ class GCode(object):
             return 'G' + self.params['G']
         if 'M' in self.params:
             return 'M' + self.params['M']
+        if 'D' in self.params:
+            return 'D' + self.params['D']
         return None
 
     @staticmethod
