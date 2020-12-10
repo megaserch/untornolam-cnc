@@ -6,11 +6,19 @@
 #MAX_VELOCITY_MM_PER_MIN_Y = 150
 #MAX_VELOCITY_MM_PER_MIN_Z = 300
 #MAX_VELOCITY_MM_PER_MIN_E = 1500
-MAX_VELOCITY_MM_PER_MIN_X = 3000
-MAX_VELOCITY_MM_PER_MIN_Y = 3000
-MAX_VELOCITY_MM_PER_MIN_Z = 3000
+#andando
+#MAX_VELOCITY_MM_PER_MIN_X = 3000
+#MAX_VELOCITY_MM_PER_MIN_Y = 3000
+#MAX_VELOCITY_MM_PER_MIN_Z = 3000
+#MAX_VELOCITY_MM_PER_MIN_E = 1500
+#MIN_VELOCITY_MM_PER_MIN = 1
+#fin andando
+MAX_VELOCITY_MM_PER_MIN_X = 24000
+MAX_VELOCITY_MM_PER_MIN_Y = 12000
+MAX_VELOCITY_MM_PER_MIN_Z = 600
 MAX_VELOCITY_MM_PER_MIN_E = 1500
 MIN_VELOCITY_MM_PER_MIN = 1
+
 # Average velocity for endstop calibration procedure
 CALIBRATION_VELOCITY_MM_PER_MIN = 300
 
@@ -21,7 +29,8 @@ CALIBRATION_VELOCITY_MM_PER_MIN = 300
 #STEPPER_PULSES_PER_MM_E = 150
 STEPPER_PULSES_PER_MM_X = 100
 STEPPER_PULSES_PER_MM_Y = 100
-STEPPER_PULSES_PER_MM_Z = 100
+#STEPPER_PULSES_PER_MM_Z = 100
+STEPPER_PULSES_PER_MM_Z = 400
 STEPPER_PULSES_PER_MM_E = 150
 
 # Invert axises direction, by default(False) high level means increase of
@@ -59,8 +68,10 @@ TABLE_SIZE_Z_MM = 600
 
 # Mixed settings.
 #STEPPER_PULSE_LENGTH_US = 2
-STEPPER_PULSE_LENGTH_US = 10
-STEPPER_MAX_ACCELERATION_MM_PER_S2 = 6000  # for all axis, mm per sec^2
+#STEPPER_PULSE_LENGTH_US = 10
+STEPPER_PULSE_LENGTH_US = 2
+#STEPPER_MAX_ACCELERATION_MM_PER_S2 = 6000  # for all axis, mm per sec^2
+STEPPER_MAX_ACCELERATION_MM_PER_S2 = 3000  # for all axis, mm per sec^2
 SPINDLE_MAX_RPM = 10000
 EXTRUDER_MAX_TEMPERATURE = 250
 BED_MAX_TEMPERATURE = 100
@@ -110,13 +121,13 @@ ENDSTOP_PIN_Z_FIN = 11
 # buffer will be prepared firstly and then command will run.
 # Before enabling this feature, please make sure that board performance is
 # enough for streaming pulses(faster then real time).
-INSTANT_RUN = True
+INSTANT_RUN = False
 
 # If this parameter is False, error will be raised on command with velocity
 # more than maximum velocity specified here. If this parameter is True,
 # velocity would be decreased(proportional for all axises) to fit the maximum
 # velocity.
-AUTO_VELOCITY_ADJUSTMENT = True
+AUTO_VELOCITY_ADJUSTMENT = False
 
 # Automatically turn on fan when extruder is heating, boolean value.
-AUTO_FAN_ON = True
+AUTO_FAN_ON = False
