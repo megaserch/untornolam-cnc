@@ -138,11 +138,11 @@ class GMachine(object):
                             1.0 / STEPPER_PULSES_PER_MM_Y,
                             1.0 / STEPPER_PULSES_PER_MM_Z,
                             1.0 / STEPPER_PULSES_PER_MM_E)
+        print( vars(delta) )
         if delta.is_zero():
             return
         self.__check_delta(delta)
 
-        #print("volviendo a 0")
         logging.info("Moving linearly {}".format(delta))
         #print("volviendo a 1")
         #gen = PulseGeneratorLinear(delta, velocity)
@@ -153,7 +153,7 @@ class GMachine(object):
         #print("volviendo a 0")
         # save position
         self._position = self._position + delta
-        #print("termino el movimiento lineal")
+        print("termino D1")
 
     @staticmethod
     def __quarter(pa, pb):
@@ -388,7 +388,9 @@ class GMachine(object):
                         vl = v
             self._move_linear(delta, vl)
         elif c == 'D1':
-            self._move_linear_propio(delta, velocity)
+            p = self.position()
+            self._local = Coordinates(p.x, p.y, p.z, p.e)
+            #self._move_linear_propio(delta, velocity)
         elif c == 'G1':  # linear interpolation
             self._move_linear(delta, velocity)
         elif c == 'G2':  # circular interpolation, clockwise
