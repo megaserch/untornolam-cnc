@@ -68,8 +68,8 @@ TABLE_SIZE_Z_MM = 600
 
 # Mixed settings.
 #STEPPER_PULSE_LENGTH_US = 2
-#STEPPER_PULSE_LENGTH_US = 10
-STEPPER_PULSE_LENGTH_US = 2
+STEPPER_PULSE_LENGTH_US = 10
+#STEPPER_PULSE_LENGTH_US = 2
 STEPPER_MAX_ACCELERATION_MM_PER_S2 = 6000  # for all axis, mm per sec^2
 #STEPPER_MAX_ACCELERATION_MM_PER_S2 = 3000  # for all axis, mm per sec^2
 SPINDLE_MAX_RPM = 10000
@@ -127,7 +127,7 @@ INSTANT_RUN = False
 # more than maximum velocity specified here. If this parameter is True,
 # velocity would be decreased(proportional for all axises) to fit the maximum
 # velocity.
-AUTO_VELOCITY_ADJUSTMENT = False
+AUTO_VELOCITY_ADJUSTMENT = True
 
 # Automatically turn on fan when extruder is heating, boolean value.
-AUTO_FAN_ON = False
+AUTO_FAN_ON = True
