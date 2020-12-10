@@ -396,7 +396,7 @@ class GMachine(object):
             if axises == (False, False, False):
                 axises = True, True, True
             print (axises)
-            self.safe_zero(*axises)
+            #self.safe_zero(*axises)
             print ("paso el safe zero")
             hal.join()
             if not hal.calibrate(*axises):
