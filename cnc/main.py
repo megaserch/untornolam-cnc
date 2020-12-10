@@ -145,13 +145,13 @@ def do_line(line):
         #print('volvi del do_comand')
     except (GCodeException, GMachineException) as e:
         print('ERROR ' + str(e))
-        #soquete.emit('GCODE Box Chat', 'TERROR ' + str(e))
+        soquete.emit('GCODE Box Chat', 'TERROR ' + str(e))
         return False
     if res is not None:
-        #soquete.emit('GCODE Box Chat', 'TOK '+ res)
+        soquete.emit('GCODE Box Chat', 'TOK '+ res)
         print('OK ' + res)
     else:
-        #soquete.emit('GCODE Box Chat', 'TOK ')
+        soquete.emit('GCODE Box Chat', 'TOK ')
         print('OK')
     return True
 
