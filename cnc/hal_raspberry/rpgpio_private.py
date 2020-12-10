@@ -241,7 +241,7 @@ class DMAProto(object):
         cs = self._dma.read_int(self._DMA_CHANNEL_ADDRESS + DMA_CS)
         print(cs)
         if cs & DMA_CS_ACTIVE == DMA_CS_ACTIVE:
-            print("cs="+cs+" dma_cs_active="+DMA_CS_ACTIVE)
+            print("cs="+str(cs)+" dma_cs_active="+str(DMA_CS_ACTIVE))
             return True
         print("retorno false")
         return False
