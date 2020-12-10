@@ -344,7 +344,7 @@ class GMachine(object):
         # read command
         c = gcode.command()
         print('Voy a mostrar el C de gocode.command(): ')
-        print(vars(c))
+        print(c)
 
         if c != 'D1':
             print('No es D1') 
