@@ -162,8 +162,8 @@ def main():
             # Use stdin/stdout, additional interfaces like
             # UART, Socket or any other can be added.
             print("*************** Bienvenido a UNTornoLaM! ***************")
-            #soquete.emit('control message', 'Calibrando')
-           # time.sleep(2)
+            soquete.emit('control message', 'Calibrando')
+            time.sleep(1)
             #print("Voy a mandar el do line g28")
             #do_line("g91")
             #time.sleep(0.1)
@@ -173,8 +173,8 @@ def main():
             #time.sleep(0.1)
             #print("Volvi del do_line bro ")
             #time.sleep(2)
-            #soquete.emit('control message', 'Enc_Calibr')
-            #time.sleep(1)
+            soquete.emit('control message', 'Enc_Calibr')
+            time.sleep(1)
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
