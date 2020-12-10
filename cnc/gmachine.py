@@ -392,10 +392,12 @@ class GMachine(object):
         elif c == 'G28':  # home
             print('entro bien en g28')
             axises = gcode.has('X'), gcode.has('Y'), gcode.has('Z')
+            print (axises)
             if axises == (False, False, False):
                 axises = True, True, True
+            print (axises)
             self.safe_zero(*axises)
-            
+            print ("paso el safe zero")
             hal.join()
             if not hal.calibrate(*axises):
                 raise GMachineException("failed to calibrate")
