@@ -157,7 +157,7 @@ def __calibrate_private(x, y, z, invert):
     end_time = time.time() + 1.2 * max_size / pulses_per_sec
     delay = int(1000000 / pulses_per_sec)
     last_pins = ~pins
-    print('empieza while')
+    #print('empieza while')
     while time.time() < end_time:
         # check each axis end stop twice
         x_endstop = (STEP_PIN_MASK_X & pins) != 0
@@ -209,7 +209,7 @@ def calibrate(x, y, z):
     :param z: boolean, True to calibrate Z axis.
     :return: boolean, True if all specified end stops were triggered.
     """
-    print("entro en calibracion")
+    #print("entro en calibracion")
 
     # enable steppers
     gpio.clear(STEPPERS_ENABLE_PIN)
@@ -348,11 +348,11 @@ def move(generator):
     if not is_ran:
         # after long command, we can fill short buffer, that why we may need to
         #  wait until long command finishes
-        print("va a entrar al while")
+        #print("va a entrar al while")
         while dma.is_active():
-            print("dentro del while")
+            #print("dentro del while")
             time.sleep(0.01)
-        print("salio del while")
+        #print("salio del while")
         dma.run(False)
     else:
         # stream mode can be activated only if previous command was finished.
@@ -365,22 +365,22 @@ def move(generator):
 def join():
     """ Wait till motors work.
     """
-    print("entro en join")
+    #print("entro en join")
     logging.info("hal join()")
-    print(vars(dma))
+    #print(vars(dma))
     # wait till dma works
     while dma.is_active():
         time.sleep(0.01)
-    print("salio del while del dma")
+    #print("salio del while del dma")
 
-    print(vars(dma))
+    #print(vars(dma))
 
 def deinit():
     """ De-initialize hardware.
     """
     #prueba mega
     join()
-    print(vars(dma))
+    #print(vars(dma))
     #fin prueba mega
     disable_steppers()
     pwm.remove_all()
