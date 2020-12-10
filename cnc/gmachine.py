@@ -133,7 +133,7 @@ class GMachine(object):
         self._position = self._position + delta
         #print("termino el movimiento lineal")
 
-    def _move_linearPropio(self, delta, velocity):
+    def _move_linear_propio(self, delta, velocity):
         delta = delta.round(1.0 / STEPPER_PULSES_PER_MM_X,
                             1.0 / STEPPER_PULSES_PER_MM_Y,
                             1.0 / STEPPER_PULSES_PER_MM_Z,
@@ -388,7 +388,7 @@ class GMachine(object):
                         vl = v
             self._move_linear(delta, vl)
         elif c == 'D1':
-            self._move_linearPropio(delta, velocity)
+            self._move_linear_propio(delta, velocity)
         elif c == 'G1':  # linear interpolation
             self._move_linear(delta, velocity)
         elif c == 'G2':  # circular interpolation, clockwise
