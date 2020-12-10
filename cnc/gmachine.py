@@ -343,9 +343,15 @@ class GMachine(object):
         logging.debug("got command " + str(gcode.params))
         # read command
         c = gcode.command()
-        if c != 'D1': 
+        print('Voy a mostrar el C de gocode.command(): ')
+        print(vars(c))
+
+        if c != 'D1':
+            print('No es D1') 
             if c is None and gcode.has_coordinates():
                 c = 'G1'
+        else:
+            print('Estoy en D1 BRO!!!')
         # read parameters
         if self._absoluteCoordinates:
             coord = gcode.coordinates(self._position - self._local,
