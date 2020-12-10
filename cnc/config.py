@@ -121,7 +121,7 @@ ENDSTOP_PIN_Z_FIN = 11
 # buffer will be prepared firstly and then command will run.
 # Before enabling this feature, please make sure that board performance is
 # enough for streaming pulses(faster then real time).
-INSTANT_RUN = False
+INSTANT_RUN = True
 
 # If this parameter is False, error will be raised on command with velocity
 # more than maximum velocity specified here. If this parameter is True,
