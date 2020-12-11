@@ -139,6 +139,8 @@ def do_line(line):
 
         if line[0] == 'D' and line[1] == '1':
             print( 'case D1 ')
+            # Aca puede ser
+            g = GCode.parse_line(line)
             res = machine.do_command(g)
         else:    
             g = GCode.parse_line(line)
