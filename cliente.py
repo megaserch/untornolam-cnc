@@ -41,32 +41,32 @@ def on_message(data):
     #print('I received a message!')
     #if (data=='prender_camara' & camara==0):
     if (data=='prender_torno'):
-        print("Prender Torno")
+        #print("Prender Torno")
         subprocess.run(['bash','/home/pi/untornolam-cnc/untornolam-cnc/otros/app-torno.sh'])
         soquete.emit('control message', 'Torno Encendido')
         #if (data=='apagar_camara' & camara==1):
         return True
 
     if (data=='apagar_torno'):
-        print("Apagar Torno")
+        #print("Apagar Torno")
         subprocess.run(['bash','/home/pi/untornolam-cnc/untornolam-cnc/otros/apagar_torno.sh'])
         soquete.emit('control message', 'Torno Apagado')
         return True
 
     if (data=='actualizar_torno'):
-        print("Actualizar GIT Torno")
+        #print("Actualizar GIT Torno")
         subprocess.run(['bash','/home/pi/untornolam-cnc/untornolam-cnc/otros/actualizar.sh'])
         soquete.emit('control message', 'Torno Actualizado')
         return True
 
     if (data=='habilitar_ssh'):
-        print("Habilitar GIT Torno")
+        #print("Habilitar GIT Torno")
         subprocess.run(['bash','/home/pi/untornolam-cnc/untornolam-cnc/otros/habilitar_ssh.sh'])
         soquete.emit('control message', 'SSH Habilitado')
         return True
 
     if (data=='test'):
-        print("Test")
+        #print("Test")
         subprocess.run(['bash','ps -aux'])
         return True
 

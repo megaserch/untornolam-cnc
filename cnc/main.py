@@ -12,7 +12,7 @@ import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
-modoprueba = 0
+modoprueba = 1
 soquete = socketio.Client()
 
 @soquete.event
@@ -138,19 +138,15 @@ def do_line(line):
             line = line + '\n'
 
         if line[0] == 'D' and line[1] == '1':
-            print( 'case D1 ')
-            # Aca puede ser
             g = GCode.parse_line(line)
-            print('EN g para D1:  \n ')
-            print(vars(g))
             res = machine.do_command(g)
         else:    
             g = GCode.parse_line(line)
-            print('EN g :  \n ')
-            print(vars(g))
-            print('voy a mandar el do command')
+            #print('EN g :  \n ')
+            #print(vars(g))
+            #print('voy a mandar el do command')
             res = machine.do_command(g)
-            print('volvi del do_comand')
+            #print('volvi del do_comand')
     except (GCodeException, GMachineException) as e:
         print('ERROR ' + str(e))
         #soquete.emit('GCODE Box Chat', 'TERROR ' + str(e))
