@@ -133,7 +133,7 @@ machine = GMachine()
 
 def do_line(line):
     try:
-        print('Line : ' + line + ' \n ')
+        #print('Line : ' + line + ' \n ')
         if line.find('\n') < 0:
             line = line + '\n'
 
