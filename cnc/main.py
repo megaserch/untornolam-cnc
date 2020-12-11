@@ -31,7 +31,7 @@ def on_message(data):
     #print('I received a message!')
     #comentada do_line(data)
     if data[0]!='T':
-        print(data+'\n')
+        #print(data+'\n')
         if modoprueba==1:
             print("torno ->" + data + "\n")
             do_line(data)

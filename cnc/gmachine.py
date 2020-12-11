@@ -138,7 +138,7 @@ class GMachine(object):
                             1.0 / STEPPER_PULSES_PER_MM_Y,
                             1.0 / STEPPER_PULSES_PER_MM_Z,
                             1.0 / STEPPER_PULSES_PER_MM_E)
-        print( vars(delta) )
+        #print( vars(delta) )
         if delta.is_zero():
             return
         self.__check_delta(delta)
@@ -153,7 +153,7 @@ class GMachine(object):
         #print("volviendo a 0")
         # save position
         self._position = self._position + delta
-        print("termino D1")
+        #print("termino D1")
 
     @staticmethod
     def __quarter(pa, pb):
@@ -343,15 +343,14 @@ class GMachine(object):
         logging.debug("got command " + str(gcode.params))
         # read command
         c = gcode.command()
-        print('Voy a mostrar el C de gocode.command(): ')
-        print(c)
+        #print('Voy a mostrar el C de gocode.command(): ')
+        #print(c)
 
         if c != 'D1':
-            print('No es D1') 
+            #print('No es D1') 
             if c is None and gcode.has_coordinates():
                 c = 'G1'
-        else:
-            print('Estoy en D1 BRO!!!')
+        
         # read parameters
         if self._absoluteCoordinates:
             coord = gcode.coordinates(self._position - self._local,
@@ -395,7 +394,6 @@ class GMachine(object):
                         vl = v
             self._move_linear(delta, vl)
         elif c == 'D1':
-            print('Holiiiiiis D1')
             #p = self.position()
             #self._local = Coordinates(p.x, p.y, p.z, p.e)
             self._move_linear_propio(delta, velocity)
