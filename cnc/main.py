@@ -141,6 +141,8 @@ def do_line(line):
             print( 'case D1 ')
             # Aca puede ser
             g = GCode.parse_line(line)
+            print('EN g para D1:  \n ')
+            print(vars(g))
             res = machine.do_command(g)
         else:    
             g = GCode.parse_line(line)
