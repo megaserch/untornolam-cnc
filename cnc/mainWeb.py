@@ -61,12 +61,12 @@ def on_message(data):
     #if (data=='prender_camara' & camara==0):
     if (data=='prender_camara'):
         #print("prender la camara")
-        subprocess.run(['bash','./prender_camara.sh'])
+        subprocess.run(['bash','/home/pi/untornolam-cnc/untornolam-cnc/otros/prender_camara.sh'])
         soquete.emit('control message', 'camara_prendida')
     #if (data=='apagar_camara' & camara==1):
     if (data=='apagar_camara'):
         #print("apagar la camara")
-        subprocess.run(['bash','./apagar_camara.sh'])
+        subprocess.run(['bash','/home/pi/untornolam-cnc/untornolam-cnc/otros/apagar_camara.sh'])
         soquete.emit('control message', 'camara_apagada')
 
     #do_line(data)
@@ -136,7 +136,7 @@ def do_line(line):
         if line[0] == 'D' and line[1] == '1':
             g = GCode.parse_line(line)
             res = machine.do_command(g)
-        else:    
+        else:
             g = GCode.parse_line(line)
             #print('EN g :  \n ')
             #print(vars(g))
@@ -175,7 +175,7 @@ def main():
             # Use stdin/stdout, additional interfaces like
             # UART, Socket or any other can be added.
             print("*************** Bienvenido a UNTornoLaM! ***************")
-           
+
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
