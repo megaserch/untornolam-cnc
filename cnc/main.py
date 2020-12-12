@@ -4,20 +4,20 @@ import os
 import sys
 import readline
 import atexit
-import socketio
-import subprocess
+#import socketio
+#import subprocess
 import time
 
 import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
 
-modoprueba = 1
-soquete = socketio.Client()
+#modoprueba = 1
+#soquete = socketio.Client()
 
-@soquete.event
-def message(data):
-    print('Mensaje Recibido!')
+#@soquete.event
+#def message(data):
+#    print('Mensaje Recibido!')
 
 #@soquete.on('chat message')
 #def on_message(data):
@@ -25,87 +25,87 @@ def message(data):
     #do_line(data)
     #print(data)
 
-@soquete.on('GCODE Box Chat')
-def on_message(data):
-    global modoprueba
+#@soquete.on('GCODE Box Chat')
+#def on_message(data):
+    #global modoprueba
     #print('I received a message!')
     #comentada do_line(data)
-    if data[0]!='T':
+    #if data[0]!='T':
         #print(data+'\n')
-        if modoprueba==1:
-            print("torno ->" + data + "\n")
-            do_line(data)
-        else:
-            print("prueba ->" + data + "\n")
-            soquete.emit('GCODE Box Chat', 'TOK ')
-    else:
-        if data=='TTORNO':
-            modoprueba = 1
-            soquete.emit('GCODE Box Chat', 'TSe entra en modo TORNO ')
-        if data=='TPRUEBA':
-            modoprueba = 0
-            soquete.emit('GCODE Box Chat', 'TSe entra en modo PRUEBA ')
+        #if modoprueba==1:
+            #print("torno ->" + data + "\n")
+            #do_line(data)
+        #else:
+            #print("prueba ->" + data + "\n")
+            #soquete.emit('GCODE Box Chat', 'TOK ')
+    #else:
+        #if data=='TTORNO':
+            #modoprueba = 1
+            #soquete.emit('GCODE Box Chat', 'TSe entra en modo TORNO ')
+        #if data=='TPRUEBA':
+            #modoprueba = 0
+            #soquete.emit('GCODE Box Chat', 'TSe entra en modo PRUEBA ')
         #soquete.emit('GCODE-Box-Chat-1', 'TOK ')
 
         #print('del torno\n')
 
 
-@soquete.on('GCODE STATUS TORNO')
-def on_message(data):
+#@soquete.on('GCODE STATUS TORNO')
+#def on_message(data):
     #print('I received a message!')
     #comentada do_line(data)
     #if data[0]!='T':
     #    print(data+'\n')
-    soquete.emit('control message', 'Enc_Calibr')
+    #soquete.emit('control message', 'Enc_Calibr')
         #print('del torno\n')
 
-@soquete.on('control message')
-def on_message(data):
+#@soquete.on('control message')
+#def on_message(data):
     #print('I received a message!')
     #if (data=='prender_camara' & camara==0):
-    if (data=='prender_camara'):
+    #if (data=='prender_camara'):
         #print("prender la camara")
-        subprocess.run(['bash','./prender_camara.sh'])
-        soquete.emit('control message', 'camara_prendida')
+        #subprocess.run(['bash','./prender_camara.sh'])
+        #soquete.emit('control message', 'camara_prendida')
     #if (data=='apagar_camara' & camara==1):
-    if (data=='apagar_camara'):
+    #if (data=='apagar_camara'):
         #print("apagar la camara")
-        subprocess.run(['bash','./apagar_camara.sh'])
-        soquete.emit('control message', 'camara_apagada')
+        #subprocess.run(['bash','./apagar_camara.sh'])
+        #soquete.emit('control message', 'camara_apagada')
 
     #do_line(data)
     #print(data)
 
-@soquete.event
-def connect():
-    print("Conectado!")
-    soquete.emit('control message', 'Enc_SinCal')
-    time.sleep(2)
-    soquete.emit('control message', 'Calibrando')
-    time.sleep(1)
+#@soquete.event
+#def connect():
+    #print("Conectado!")
+    #soquete.emit('control message', 'Enc_SinCal')
+    #time.sleep(2)
+    #soquete.emit('control message', 'Calibrando')
+    #time.sleep(1)
     #print("Voy a mandar el do line g28")
     #do_line("g91")
-    do_line("g1 x10 f300")
-    time.sleep(1)
+    #do_line("g1 x10 f300")
+    #time.sleep(1)
     #do_line("g1 x20 f400")
     #time.sleep(0.1)
-    do_line("G28")
-    time.sleep(8)
+    #do_line("G28")
+    #time.sleep(8)
     #print("Volvi del do_line bro ")
     #time.sleep(2)
-    soquete.emit('control message', 'Enc_Calibr')
-    time.sleep(1)
+    #soquete.emit('control message', 'Enc_Calibr')
+    #time.sleep(1)
 
-@soquete.event
-def connect_error():
-    print("Falla de conexion!")
+#@soquete.event
+#def connect_error():
+    #print("Falla de conexion!")
 
-@soquete.event
-def disconnect():
-    print("Desconectado!")
+#@soquete.event
+#def disconnect():
+    #print("Desconectado!")
 
 
-print("Intentanto conectar")
+#print("Intentanto conectar")
 
 #soquete.connect('http://66.97.46.179:3003/test')
 #soquete.connect('http://66.97.46.179:3003/')
@@ -140,7 +140,7 @@ def do_line(line):
         if line[0] == 'D' and line[1] == '1':
             g = GCode.parse_line(line)
             res = machine.do_command(g)
-        else:    
+        else:
             g = GCode.parse_line(line)
             #print('EN g :  \n ')
             #print(vars(g))
@@ -179,7 +179,7 @@ def main():
             # Use stdin/stdout, additional interfaces like
             # UART, Socket or any other can be added.
             print("*************** Bienvenido a UNTornoLaM! ***************")
-           
+
             while True:
                 line = raw_input('> ')
                 if line == 'quit' or line == 'exit':
