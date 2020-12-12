@@ -1,1 +1,1 @@
-python3 /home/pi/untornolam-cnc/untornolam-cnc/pycnc
+python3 /home/pi/untornolam-cnc/untornolam-cnc/pycnWeb
